@@ -1,14 +1,91 @@
 .login {
-    background-color: #FFFFFF;
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 200px;
-    align-items: center;
+  width: 900px;
+  height: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  border-radius: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  .insta {
+    margin-left: 20px;
+  }
+
+  h1 {
+    font-size: 48px;
+    font-family: 'Dancing Script', cursive;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .blocks {
+    width: 460px;
     display: flex;
     flex-direction: column;
-    border: 1px solid gray;
-    border-radius: 20px;
-    padding-top: 20px;
-    padding-bottom: 40px;
+
+    .fields {
+      background-color: #ffffff;
+      width: 460px;
+      height: 350px;
+      padding: 0;
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+      border: 1px solid gray;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .register {
+      background-color: #ffffff;
+      width: 460px;
+      height: 50px;
+      display: flex;
+      border: 1px solid gray;
+      border-radius: 20px;
+
+      p:first-child {
+        margin-left: 50px;
+        font-size: 16px;
+        padding: 0;
+        align-self: center;
+      }
+
+      p:last-child {
+        margin-left: 10px;
+        font-size: 16px;
+        padding: 0;
+        align-self: center;
+        color: #4682b4;
+        cursor: pointer;
+      }
+    }
+
+    p {
+        align-self: center;
+    }
+
+    .badges {
+        width: 460px;
+        display: flex;
+        justify-content: center;
+
+        .badge {
+            width: 120px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .badge:first-child {
+            width: 140px;
+            margin-right: 40px;
+        }
+
+    }
+  }
 }
