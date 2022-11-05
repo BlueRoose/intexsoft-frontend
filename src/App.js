@@ -1,11 +1,16 @@
-import Login from "./components/Login/Login";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Login from "./pages/Login/Login";
 import "./index.scss";
 
 function App() {
   return (
-    <div className="App">
-      <Login/>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route exact path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

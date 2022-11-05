@@ -1,16 +1,15 @@
 import React from "react";
-import Button from "../Button/Button";
-import Input from "../Input/Input";
+import Button from "../../components/Button/Button";
+import Input from "../../components/Input/Input";
 import styles from "./Login.module.scss";
 
 function Login() {
-  const [login, setLogin] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [form, setForm] = React.useState({});
+
+  const handleChangeForm = ({name, value}) => setForm({...form, [name]: value});
 
   const alertUser = () => {
-    const obj = { login: login, password: password };
-    alert(obj.login + " " + obj.password);
-    console.log(obj);
+    alert(JSON.stringify(form));
   };
 
   return (
@@ -19,13 +18,14 @@ function Login() {
       <div className={styles.blocks}>
         <div className={styles.fields}>
           <h1>Intexgram</h1>
-          <Input type="text" placeholder="Enter your login" set={setLogin} />
+          <Input type="text" name="login" placeholder="Enter your login" handleChangeForm={handleChangeForm} />
           <Input
             type="password"
+            name="password"
             placeholder="Enter your password"
-            set={setPassword}
+            handleChangeForm={handleChangeForm}
           />
-          <Button click={alertUser}>Login</Button>
+          <Button onClick={alertUser}>Login</Button>
         </div>
         <div className={styles.register}>
             <p>У Вас ещё нет аккаунта?</p>
