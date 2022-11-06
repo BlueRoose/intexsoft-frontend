@@ -39,6 +39,18 @@
       border: 1px solid gray;
       border-radius: 20px;
       margin-bottom: 20px;
+
+      .pass {
+        display: flex;
+        position: relative;
+
+        img {
+          position: absolute;
+          top: 5px;
+          left: 264px;
+          cursor: pointer;
+        }
+      }
     }
 
     .register {
