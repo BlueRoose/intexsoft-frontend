@@ -39,9 +39,9 @@ function Login() {
               handleChangeForm={handleChangeForm}
             />
             {showed ? (
-              <img onClick={() => setShowed(!showed)} width={32} height={32} src="res/show.png" alt="show" />
+              <img onClick={() => setShowed(!showed)} width={32} height={32} src="res/hide.png" alt="show" />
             ) : (
-              <img onClick={() => setShowed(!showed)} width={32} height={32} src="res/hide.png" alt="hide" />
+              <img onClick={() => setShowed(!showed)} width={32} height={32} src="res/show.png" alt="hide" />
             )}
           </div>
           <Button onClick={alertUser}>Login</Button>
