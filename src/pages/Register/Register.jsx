@@ -36,7 +36,7 @@ function Register() {
           <Input
             type="text"
             name="nameSurname"
-            placeholder="Enter your Name"
+            placeholder="Enter your name"
             handleChangeForm={handleChangeForm}
           />
           <Input
