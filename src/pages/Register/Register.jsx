@@ -15,9 +15,6 @@ function Register() {
     alert(JSON.stringify(form));
   };
 
-
-  
-
   return (
     <div className={styles.register}>
       <div className={styles.logo}>
