@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.register {
+  width: 900px;
+  height: 650px;
+  background-color: #ffffff;
+  border: 1px solid gray;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 75px;
+  display: flex;
+
+  .logo {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-right: 1px solid gray;
+
+    h1 {
+      font-size: 48px;
+      font-family: "Dancing Script", cursive;
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    p {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 60px;
+      margin-bottom: 60px;
+    }
+  }
+
+  .fields {
+    width: 50%;
+
+    h3 {
+      font-size: 24px;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .par {
+      font-size: 14px;
+      color: gray;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .inputs {
+      width: 350px;
+      display: flex;
+      flex-direction: column;
+      margin: 30px 50px 20px 50px;
+      align-items: center;
+
+      .pass {
+        display: flex;
+        position: relative;
+
+        img {
+          position: absolute;
+          top: 5px;
+          left: 264px;
+          cursor: pointer;
+        }
+      }
+
+      Button {
+        margin-top: 10px;
+      }
+
+      .login {
+        width: 350px;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+
+        p:first-child {
+          font-size: 16px;
+          padding: 0;
+          align-self: center;
+        }
+
+        p:last-child {
+          margin-left: 10px;
+          font-size: 16px;
+          padding: 0;
+          align-self: center;
+          color: #4682b4;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .badges {
+      width: 350px;
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      margin-left: 50px;
+      margin-right: 50px;
+
+      .badge {
+        width: 120px;
+        height: 40px;
+        cursor: pointer;
+      }
+
+      .badge:first-child {
+        width: 140px;
+        margin-right: 40px;
+      }
+    }
+  }
+}

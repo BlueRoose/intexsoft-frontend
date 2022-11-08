@@ -17,7 +17,7 @@
 
   h1 {
     font-size: 48px;
-    font-family: 'Dancing Script', cursive;
+    font-family: "Dancing Script", cursive;
     margin-top: 30px;
     margin-bottom: 30px;
   }
@@ -75,29 +75,31 @@
         align-self: center;
         color: #4682b4;
         cursor: pointer;
+        margin-top: 12px;
       }
     }
 
-    p {
-        align-self: center;
+    .app {
+      align-self: center;
+      margin-top: 20px;
     }
 
     .badges {
-        width: 460px;
-        display: flex;
-        justify-content: center;
+      width: 460px;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
 
-        .badge {
-            width: 120px;
-            height: 40px;
-            cursor: pointer;
-        }
+      .badge {
+        width: 120px;
+        height: 40px;
+        cursor: pointer;
+      }
 
-        .badge:first-child {
-            width: 140px;
-            margin-right: 40px;
-        }
-
+      .badge:first-child {
+        width: 140px;
+        margin-right: 40px;
+      }
     }
   }
 }
