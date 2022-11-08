@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import styles from "./Login.module.scss";
+import axios from "axios";
 
 function Login() {
   const [form, setForm] = React.useState({});
@@ -11,7 +12,7 @@ function Login() {
   const handleChangeForm = ({ name, value }) =>
     setForm({ ...form, [name]: value });
 
-  const alertUser = () => {
+  const checkUser = () => {
     alert(JSON.stringify(form));
   };
 
@@ -45,7 +46,7 @@ function Login() {
               <img onClick={() => setShowed(!showed)} width={32} height={32} src="res/show.png" alt="hide" />
             )}
           </div>
-          <Button onClick={alertUser}>Login</Button>
+          <Button onClick={checkUser}>Login</Button>
         </div>
         <div className={styles.register}>
           <p>У Вас ещё нет аккаунта?</p>

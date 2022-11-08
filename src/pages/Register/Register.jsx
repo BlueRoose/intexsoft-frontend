@@ -3,6 +3,7 @@ import styles from "./Register.module.scss";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Register() {
   const [form, setForm] = React.useState({});
@@ -11,7 +12,7 @@ function Register() {
   const handleChangeForm = ({ name, value }) =>
     setForm({ ...form, [name]: value });
 
-  const alertUser = () => {
+  const saveUser = () => {
     alert(JSON.stringify(form));
   };
 
@@ -73,7 +74,7 @@ function Register() {
             Регистрируясь, вы принимаете наши Условия, Политику
             конфиденциальности и Политику в отношении файлов cookie.
           </p>
-          <Button onClick={alertUser}>Зарегистрироваться</Button>
+          <Button onClick={saveUser}>Зарегистрироваться</Button>
           <div className={styles.login}>
             <p>Уже есть аккаунт?</p>
             <Link to="/login" style={{ textDecoration: 'none' }} exact>
