@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import styles from "./Login.module.scss";
@@ -48,9 +49,9 @@ function Login() {
         </div>
         <div className={styles.register}>
           <p>У Вас ещё нет аккаунта?</p>
-          <p>Зарегистрироваться</p>
+          <Link to="/register" style={{ textDecoration: 'none' }} exact><p>Зарегистрироваться</p></Link>
         </div>
-        <p>Установите наше приложение</p>
+        <p className={styles.app}>Установите наше приложение</p>
         <div className={styles.badges}>
           <img src="res/google.png" alt="apple" className={styles.badge} />
           <img src="res/microsoft.png" alt="google" className={styles.badge} />
