@@ -12,8 +12,13 @@ function Register() {
   const handleChangeForm = ({ name, value }) =>
     setForm({ ...form, [name]: value });
 
-  const saveUser = () => {
-    alert(JSON.stringify(form));
+  const saveUser = async () => {
+    try {
+      const responce = await axios.post("http://localhost:5000/signup", form);
+      console.log(responce);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -35,16 +40,16 @@ function Register() {
           />
           <Input
             type="text"
-            name="nameSurname"
+            name="name"
             placeholder="Enter your name"
             handleChangeForm={handleChangeForm}
           />
-          <Input
+          {/* <Input
             type="text"
             name="username"
             placeholder="Enter your login"
             handleChangeForm={handleChangeForm}
-          />
+          /> */}
           <div className={styles.pass}>
             <Input
               type={showed ? "text" : "password"}
