@@ -3,6 +3,7 @@ import styles from "./Register.module.scss";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Register() {
   const [form, setForm] = React.useState({});
@@ -11,8 +12,13 @@ function Register() {
   const handleChangeForm = ({ name, value }) =>
     setForm({ ...form, [name]: value });
 
-  const alertUser = () => {
-    alert(JSON.stringify(form));
+  const saveUser = async () => {
+    try {
+      const responce = await axios.post("http://localhost:5000/signup", form);
+      console.log(responce);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -34,8 +40,8 @@ function Register() {
           />
           <Input
             type="text"
-            name="nameSurname"
-            placeholder="Enter your login"
+            name="name"
+            placeholder="Enter your name"
             handleChangeForm={handleChangeForm}
           />
           <Input
@@ -73,7 +79,7 @@ function Register() {
             Регистрируясь, вы принимаете наши Условия, Политику
             конфиденциальности и Политику в отношении файлов cookie.
           </p>
-          <Button onClick={alertUser}>Зарегистрироваться</Button>
+          <Button onClick={saveUser}>Зарегистрироваться</Button>
           <div className={styles.login}>
             <p>Уже есть аккаунт?</p>
             <Link to="/login" style={{ textDecoration: 'none' }} exact>

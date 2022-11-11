@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import styles from "./Login.module.scss";
+import axios from "axios";
 
 function Login() {
   const [form, setForm] = React.useState({});
@@ -11,8 +12,14 @@ function Login() {
   const handleChangeForm = ({ name, value }) =>
     setForm({ ...form, [name]: value });
 
-  const alertUser = () => {
-    alert(JSON.stringify(form));
+  const checkUser = async () => {
+    try {
+      const responce = await axios.post("http://localhost:5000/signin", {username:"123", password:"123"});
+      localStorage.setItem("token", responce.data.token);
+      alert(localStorage.getItem("token"));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -28,7 +35,7 @@ function Login() {
           <h1>Intexgram</h1>
           <Input
             type="text"
-            name="login"
+            name="username"
             placeholder="Enter your login"
             handleChangeForm={handleChangeForm}
           />
@@ -45,7 +52,7 @@ function Login() {
               <img onClick={() => setShowed(!showed)} width={32} height={32} src="res/show.png" alt="hide" />
             )}
           </div>
-          <Button onClick={alertUser}>Login</Button>
+          <Button onClick={checkUser}>Login</Button>
         </div>
         <div className={styles.register}>
           <p>У Вас ещё нет аккаунта?</p>
