@@ -44,12 +44,12 @@ function Register() {
             placeholder="Enter your name"
             handleChangeForm={handleChangeForm}
           />
-          {/* <Input
+          <Input
             type="text"
             name="username"
             placeholder="Enter your login"
             handleChangeForm={handleChangeForm}
-          /> */}
+          />
           <div className={styles.pass}>
             <Input
               type={showed ? "text" : "password"}

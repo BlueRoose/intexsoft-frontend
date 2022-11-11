@@ -12,8 +12,14 @@ function Login() {
   const handleChangeForm = ({ name, value }) =>
     setForm({ ...form, [name]: value });
 
-  const checkUser = () => {
-    alert(JSON.stringify(form));
+  const checkUser = async () => {
+    try {
+      const responce = await axios.post("http://localhost:5000/signin", {username:"123", password:"123"});
+      localStorage.setItem("token", responce.data.token);
+      alert(localStorage.getItem("token"));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -29,7 +35,7 @@ function Login() {
           <h1>Intexgram</h1>
           <Input
             type="text"
-            name="login"
+            name="username"
             placeholder="Enter your login"
             handleChangeForm={handleChangeForm}
           />
