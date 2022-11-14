@@ -6,7 +6,7 @@ function RequireAuth({ children }) {
     const {isAuth} = useAuth();
 
     if (!isAuth) {
-      return <Navigate to="/login" state={{from: location}} />
+      return <Navigate to="/login" state={{from: location}} />;
     }
 
     return children;
