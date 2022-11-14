@@ -3,8 +3,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import styles from "./Login.module.scss";
-import axios from "axios";
 import { useAuth } from "../../hooks/useAuth";
+import PasswordInput from "../../components/PasswordInput/PasswordInput";
+import {checkUser} from "../../network/lib/user";
 
 function Login() {
   const [form, setForm] = React.useState({});
@@ -19,13 +20,14 @@ function Login() {
     setForm({ ...form, [name]: value });
   };
 
-  const checkUser = async () => {
+  const handleCheckUser = async () => {
     try {
-      const responce = await axios.post("http://localhost:5000/signin", form);
-      localStorage.setItem("token", responce.data.token);
-      login(true, () => navigate(fromPage, {replace: true}));
+        checkUser(form).then(function(responce) {
+        localStorage.setItem("token", responce.data.token);
+        login(true, () => navigate(fromPage, {replace: true}));
+      });
     } catch (error) {
-      console.log(error);
+      alert("Ошибка входа в аккаунт!");
     }
   };
 
@@ -44,34 +46,18 @@ function Login() {
             type="text"
             name="username"
             placeholder="Enter your login"
-            handleChangeForm={handleChangeForm}
+            onChange={handleChangeForm}
           />
           <div className={styles.pass}>
             <Input
               type={showed ? "text" : "password"}
               name="password"
               placeholder="Enter your password"
-              handleChangeForm={handleChangeForm}
+              onChange={handleChangeForm}
             />
-            {showed ? (
-              <img
-                onClick={() => setShowed(!showed)}
-                width={32}
-                height={32}
-                src="res/hide.png"
-                alt="show"
-              />
-            ) : (
-              <img
-                onClick={() => setShowed(!showed)}
-                width={32}
-                height={32}
-                src="res/show.png"
-                alt="hide"
-              />
-            )}
+            <PasswordInput showed={showed} setShowed={setShowed} />
           </div>
-          <Link to="/mainpage"><Button onClick={checkUser}>Login</Button></Link>
+          <Link to="/mainpage"><Button onClick={handleCheckUser}>Login</Button></Link>
         </div>
         <div className={styles.register}>
           <p>У Вас ещё нет аккаунта?</p>

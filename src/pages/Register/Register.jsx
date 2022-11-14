@@ -3,7 +3,7 @@ import styles from "./Register.module.scss";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import {addUser} from "../../network/lib/user";
 
 function Register() {
   const [form, setForm] = React.useState({});
@@ -14,10 +14,10 @@ function Register() {
 
   const saveUser = async () => {
     try {
-      const responce = await axios.post("http://localhost:5000/signup", form);
-      console.log(responce);
+      addUser(form).then(function(responce) {
+      });
     } catch (error) {
-      console.log(error);
+      alert("Ошибка регистрации!");
     }
   };
 
@@ -36,26 +36,26 @@ function Register() {
             type="text"
             name="email"
             placeholder="Enter your email"
-            handleChangeForm={handleChangeForm}
+            onChange={handleChangeForm}
           />
           <Input
             type="text"
             name="name"
             placeholder="Enter your name"
-            handleChangeForm={handleChangeForm}
+            onChange={handleChangeForm}
           />
           <Input
             type="text"
             name="username"
             placeholder="Enter your login"
-            handleChangeForm={handleChangeForm}
+            onChange={handleChangeForm}
           />
           <div className={styles.pass}>
             <Input
               type={showed ? "text" : "password"}
               name="password"
               placeholder="Enter your password"
-              handleChangeForm={handleChangeForm}
+              onChange={handleChangeForm}
             />
             {showed ? (
               <img
@@ -82,7 +82,7 @@ function Register() {
           <Button onClick={saveUser}>Зарегистрироваться</Button>
           <div className={styles.login}>
             <p>Уже есть аккаунт?</p>
-            <Link to="/login" style={{ textDecoration: 'none' }} exact>
+            <Link to="/login" style={{ textDecoration: "none" }} exact>
               <p>Войдите</p>
             </Link>
           </div>
