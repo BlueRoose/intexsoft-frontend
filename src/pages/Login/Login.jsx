@@ -5,7 +5,7 @@ import Input from "../../components/Input/Input";
 import styles from "./Login.module.scss";
 import { useAuth } from "../../hooks/useAuth";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
-import {checkUser} from "../../network/lib/user";
+import {checkUser} from "../../api/lib/user";
 
 function Login() {
   const [form, setForm] = React.useState({});

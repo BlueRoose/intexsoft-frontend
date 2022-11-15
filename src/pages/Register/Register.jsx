@@ -3,7 +3,7 @@ import styles from "./Register.module.scss";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
-import {addUser} from "../../network/lib/user";
+import {addUser} from "../../api/lib/user";
 
 function Register() {
   const [form, setForm] = React.useState({});
