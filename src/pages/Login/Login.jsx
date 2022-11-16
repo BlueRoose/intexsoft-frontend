@@ -3,17 +3,17 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import styles from "./Login.module.scss";
-import { useAuth } from "../../hooks/useAuth";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
-import { getSessionFromStorage } from "../../api/lib/user";
+import { login } from "../../api/user";
+import { useAuth } from "../../hooks/useAuth";
 
 function Login() {
   const [form, setForm] = React.useState({});
-  // const location = useLocation();
-  // const navigate = useNavigate();
-  // const {login} = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const {logIn} = useAuth();
 
-  // const fromPage = location.state?.from?.pathname || "/";
+  const fromPage = location.state?.from?.pathname || "/";
 
   const handleChangeForm = ({ name, value }) => {
     setForm({ ...form, [name]: value });
@@ -25,7 +25,8 @@ function Login() {
       //   localStorage.setItem("token", responce.data.token);
       //   login(true, () => navigate(fromPage, {replace: true}));
       // });
-      getSessionFromStorage("/signin", form);
+      login(form);
+      logIn(true, () => navigate(fromPage, {replace: true}));
     } catch (error) {
       alert("Ошибка входа в аккаунт!");
     }
