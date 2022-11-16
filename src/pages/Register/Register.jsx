@@ -1,21 +1,26 @@
 import React from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Register.module.scss";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import { Link } from "react-router-dom";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
+import { register } from "../../api/user";
+import {useAuth} from "../../hooks/useAuth";
 
 function Register() {
   const [form, setForm] = React.useState({});
+  const location = useLocation();
+  const navigate = useNavigate();
+  const {logIn} = useAuth();
+
+  const fromPage = location.state?.from?.pathname || "/mainpage";
 
   const handleChangeForm = ({ name, value }) =>
     setForm({ ...form, [name]: value });
 
   const saveUser = async () => {
-    try {
-    } catch (error) {
-      alert("Ошибка регистрации!");
-    }
+    register(form);
+    logIn(true, () => navigate(fromPage, {replace: true}));
   };
 
   return (
@@ -43,7 +48,7 @@ function Register() {
           />
           <Input
             type="text"
-            name="login"
+            name="username"
             placeholder="Enter your login"
             onChange={handleChangeForm}
           />
@@ -54,7 +59,7 @@ function Register() {
             Регистрируясь, вы принимаете наши Условия, Политику
             конфиденциальности и Политику в отношении файлов cookie.
           </p>
-          {/* <Button onClick={saveUser}>Зарегистрироваться</Button> */}
+          <Button onClick={saveUser}>Зарегистрироваться</Button>
           <div className={styles.login}>
             <p>Уже есть аккаунт?</p>
             <Link to="/login" style={{ textDecoration: "none" }} exact>

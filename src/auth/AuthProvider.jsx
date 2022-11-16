@@ -4,19 +4,18 @@ export const AuthContext = React.createContext(null);
 
 export const AuthProvider = ({children}) => {
     const [isAuth, setIsAuth] = React.useState(false);
-    const [user, setUser] = React.useState({});
 
-    const login = (flag, cb) => {
+    const logIn = (flag, cb) => {
         setIsAuth(flag);
         cb();
     };
 
-    const logout = (flag, cb) => {
+    const logOut = (flag, cb) => {
         setIsAuth(flag);
         cb();
     };
 
-    const value = {isAuth, login, logout};
+    const value = {isAuth, logIn, logOut};
 
     return <AuthContext.Provider value={value}>
         {children}
