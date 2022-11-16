@@ -5,16 +5,15 @@ import Input from "../../components/Input/Input";
 import styles from "./Login.module.scss";
 import { useAuth } from "../../hooks/useAuth";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
-import {checkUser} from "../../api/lib/user";
+import { getSessionFromStorage } from "../../api/lib/user";
 
 function Login() {
   const [form, setForm] = React.useState({});
-  const [showed, setShowed] = React.useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const {login} = useAuth();
+  // const location = useLocation();
+  // const navigate = useNavigate();
+  // const {login} = useAuth();
 
-  const fromPage = location.state?.from?.pathname || "/";
+  // const fromPage = location.state?.from?.pathname || "/";
 
   const handleChangeForm = ({ name, value }) => {
     setForm({ ...form, [name]: value });
@@ -22,10 +21,11 @@ function Login() {
 
   const handleCheckUser = async () => {
     try {
-        checkUser(form).then(function(responce) {
-        localStorage.setItem("token", responce.data.token);
-        login(true, () => navigate(fromPage, {replace: true}));
-      });
+      //   checkUser(form).then(function(responce) {
+      //   localStorage.setItem("token", responce.data.token);
+      //   login(true, () => navigate(fromPage, {replace: true}));
+      // });
+      getSessionFromStorage("/signin", form);
     } catch (error) {
       alert("Ошибка входа в аккаунт!");
     }
@@ -49,13 +49,7 @@ function Login() {
             onChange={handleChangeForm}
           />
           <div className={styles.pass}>
-            <Input
-              type={showed ? "text" : "password"}
-              name="password"
-              placeholder="Enter your password"
-              onChange={handleChangeForm}
-            />
-            <PasswordInput showed={showed} setShowed={setShowed} />
+            <PasswordInput onChange={handleChangeForm} />
           </div>
           <Link to="/mainpage"><Button onClick={handleCheckUser}>Login</Button></Link>
         </div>

@@ -4,6 +4,7 @@ export const AuthContext = React.createContext(null);
 
 export const AuthProvider = ({children}) => {
     const [isAuth, setIsAuth] = React.useState(false);
+    const [user, setUser] = React.useState({});
 
     const login = (flag, cb) => {
         setIsAuth(flag);

@@ -3,19 +3,16 @@ import styles from "./Register.module.scss";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
-import {addUser} from "../../api/lib/user";
+import PasswordInput from "../../components/PasswordInput/PasswordInput";
 
 function Register() {
   const [form, setForm] = React.useState({});
-  const [showed, setShowed] = React.useState(false);
 
   const handleChangeForm = ({ name, value }) =>
     setForm({ ...form, [name]: value });
 
   const saveUser = async () => {
     try {
-      addUser(form).then(function(responce) {
-      });
     } catch (error) {
       alert("Ошибка регистрации!");
     }
@@ -46,40 +43,18 @@ function Register() {
           />
           <Input
             type="text"
-            name="username"
+            name="login"
             placeholder="Enter your login"
             onChange={handleChangeForm}
           />
           <div className={styles.pass}>
-            <Input
-              type={showed ? "text" : "password"}
-              name="password"
-              placeholder="Enter your password"
-              onChange={handleChangeForm}
-            />
-            {showed ? (
-              <img
-                onClick={() => setShowed(!showed)}
-                width={32}
-                height={32}
-                src="res/hide.png"
-                alt="show"
-              />
-            ) : (
-              <img
-                onClick={() => setShowed(!showed)}
-                width={32}
-                height={32}
-                src="res/show.png"
-                alt="hide"
-              />
-            )}
+            <PasswordInput onChange={handleChangeForm} />
           </div>
           <p className={styles.par}>
             Регистрируясь, вы принимаете наши Условия, Политику
             конфиденциальности и Политику в отношении файлов cookie.
           </p>
-          <Button onClick={saveUser}>Зарегистрироваться</Button>
+          {/* <Button onClick={saveUser}>Зарегистрироваться</Button> */}
           <div className={styles.login}>
             <p>Уже есть аккаунт?</p>
             <Link to="/login" style={{ textDecoration: "none" }} exact>
