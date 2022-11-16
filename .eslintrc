@@ -5,10 +5,10 @@
     ],
     "rules": {
         "no-console": "warn",
-        "prefer-const": "warn",
-        "quotes": ["warn", "double"],
-        "max-len": ["warn", {"code": 120}],
-        "comma-dangle": ["warn", "always-multiline"],
-        "semi": ["warn", "always"]
+        "prefer-const": "error",
+        "quotes": ["error", "double"],
+        "max-len": ["error", {"code": 120}],
+        "comma-dangle": ["error", "always-multiline"],
+        "semi": ["error", "always"]
     }
 }

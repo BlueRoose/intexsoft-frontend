@@ -1,9 +1,17 @@
 import React from "react";
+import Input from "../Input/Input";
 
-function PasswordInput({showed, setShowed}) {
+function PasswordInput({ onChange }) {
+  const [showed, setShowed] = React.useState(false);
 
   return (
     <>
+      <Input
+        type={showed ? "text" : "password"}
+        name="password"
+        placeholder="Enter your password"
+        onChange={onChange}
+      />
       {showed ? (
         <img
           onClick={() => setShowed(!showed)}
