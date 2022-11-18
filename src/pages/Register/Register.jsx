@@ -4,20 +4,22 @@ import styles from "./Register.module.scss";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
-import { register } from "../../api/user";
-import {useAuth} from "../../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 function Register() {
   const [form, setForm] = React.useState({});
   const navigate = useNavigate();
-  const {logIn} = useAuth();
+  const {reg} = useAuth();
 
   const handleChangeForm = ({ name, value }) =>
     setForm({ ...form, [name]: value });
 
   const saveUser = async () => {
-    register(form);
-    logIn(true, () => navigate("/posts", {replace: true}));
+    try {
+      reg(form).then(() => navigate("/posts", {replace: true}));
+    } catch (error) {
+      alert("Ошибка регистрации");
+    }
   };
 
   return (

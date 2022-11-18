@@ -1,19 +1,15 @@
 import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import styles from "./Login.module.scss";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
-import { login } from "../../api/user";
-import { useAuth } from "../../hooks/useAuth";
+import {useAuth} from "../../hooks/useAuth";
 
 function Login() {
   const [form, setForm] = React.useState({});
-  const location = useLocation();
   const navigate = useNavigate();
   const {logIn} = useAuth();
-
-  const fromPage = location.state?.from?.pathname || "/";
 
   const handleChangeForm = ({ name, value }) => {
     setForm({ ...form, [name]: value });
@@ -21,8 +17,7 @@ function Login() {
 
   const handleCheckUser = async () => {
     try {
-      login(form);
-      logIn(true, () => navigate(fromPage, {replace: true}));
+      await logIn(form).then(() => navigate("/posts", {replace: true}));
     } catch (error) {
       alert("Ошибка входа в аккаунт!");
     }

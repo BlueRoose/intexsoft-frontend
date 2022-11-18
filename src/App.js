@@ -6,6 +6,7 @@ import "./index.scss";
 import RequireAuth from "./auth/RequireAuth";
 import { AuthProvider } from "./auth/AuthProvider";
 import Posts from "./pages/Posts/Posts";
+import GuestRoute from "./auth/GuestRoute";
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <Routes>
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/register" element={<Register />} />
+            <Route exact path="/login" element={<GuestRoute><Login /></GuestRoute>} />
+            <Route exact path="/register" element={<GuestRoute><Register /></GuestRoute>} />
             <Route
               exact
               path="/posts"
