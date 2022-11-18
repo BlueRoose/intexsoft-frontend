@@ -9,7 +9,7 @@ function PasswordInput({ onChange }) {
       <Input
         type={showed ? "text" : "password"}
         name="password"
-        placeholder="Enter your password"
+        placeholder="Введите пароль"
         onChange={onChange}
       />
       {showed ? (

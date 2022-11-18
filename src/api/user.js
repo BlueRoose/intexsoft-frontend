@@ -1,46 +1,4 @@
-import axios from "axios";
-
-export const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
-});
-
-const getSessionFromStorage = () => localStorage.getItem("token");
-
-// фабрика создания запросов
-export const request = async ({
-  headers = {},
-  method = "POST",
-  url,
-  data,
-  params,
-}) => {
-  // получили токен
-  const { accessToken } = getSessionFromStorage() || {};
-
-  // если есть токен то добавили его в header
-  if (accessToken) {
-    headers.Authorization = `Bearer ${accessToken}`;
-  }
-
-  // формируем параметры запроса
-  const options = {
-    headers,
-    method,
-    data,
-    params,
-    url,
-  };
-
-  try {
-    // выполняем запрос
-    const result = await axiosInstance(options);
-    
-    return result.data.token;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-};
+import { request } from "./createRequest";
 
 // пример запроса авторизации
 export const login = async ({ username, password}) => {
@@ -68,10 +26,10 @@ export const register = async ({ username, password, email, name}) => {
 };
 
 // пример запроса получения постов
-const getPost = ({ login, password }) => {
-  const { posts } = request({
-    url: "/posts",
-  });
+// const getPost = ({ login, password }) => {
+//   const { posts } = request({
+//     url: "/posts",
+//   });
 
-  return posts;
-};
+//   return posts;
+// };
