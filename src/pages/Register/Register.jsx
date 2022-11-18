@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Register.module.scss";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
@@ -9,18 +9,15 @@ import {useAuth} from "../../hooks/useAuth";
 
 function Register() {
   const [form, setForm] = React.useState({});
-  const location = useLocation();
   const navigate = useNavigate();
   const {logIn} = useAuth();
-
-  const fromPage = location.state?.from?.pathname || "/mainpage";
 
   const handleChangeForm = ({ name, value }) =>
     setForm({ ...form, [name]: value });
 
   const saveUser = async () => {
     register(form);
-    logIn(true, () => navigate(fromPage, {replace: true}));
+    logIn(true, () => navigate("/posts", {replace: true}));
   };
 
   return (
@@ -37,19 +34,19 @@ function Register() {
           <Input
             type="text"
             name="email"
-            placeholder="Enter your email"
+            placeholder="Введите адрес эл. почты"
             onChange={handleChangeForm}
           />
           <Input
             type="text"
             name="name"
-            placeholder="Enter your name"
+            placeholder="Введите имя"
             onChange={handleChangeForm}
           />
           <Input
             type="text"
             name="username"
-            placeholder="Enter your login"
+            placeholder="Введите логин"
             onChange={handleChangeForm}
           />
           <div className={styles.pass}>

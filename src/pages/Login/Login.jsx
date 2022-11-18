@@ -21,10 +21,6 @@ function Login() {
 
   const handleCheckUser = async () => {
     try {
-      //   checkUser(form).then(function(responce) {
-      //   localStorage.setItem("token", responce.data.token);
-      //   login(true, () => navigate(fromPage, {replace: true}));
-      // });
       login(form);
       logIn(true, () => navigate(fromPage, {replace: true}));
     } catch (error) {
@@ -46,13 +42,13 @@ function Login() {
           <Input
             type="text"
             name="username"
-            placeholder="Enter your login"
+            placeholder="Введите логин"
             onChange={handleChangeForm}
           />
           <div className={styles.pass}>
             <PasswordInput onChange={handleChangeForm} />
           </div>
-          <Link to="/mainpage"><Button onClick={handleCheckUser}>Login</Button></Link>
+          <Link to="/posts"><Button onClick={handleCheckUser}>Login</Button></Link>
         </div>
         <div className={styles.register}>
           <p>У Вас ещё нет аккаунта?</p>

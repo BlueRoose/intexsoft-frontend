@@ -5,6 +5,7 @@ import Register from "./pages/Register/Register";
 import "./index.scss";
 import RequireAuth from "./auth/RequireAuth";
 import { AuthProvider } from "./auth/AuthProvider";
+import Posts from "./pages/Posts/Posts";
 
 function App() {
   return (
@@ -16,10 +17,10 @@ function App() {
             <Route exact path="/register" element={<Register />} />
             <Route
               exact
-              path="/mainpage"
+              path="/posts"
               element={
                 <RequireAuth>
-                  <></>
+                  <Posts />
                 </RequireAuth>
               }
             />

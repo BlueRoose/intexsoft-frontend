@@ -15,7 +15,7 @@ export const request = async ({
   params,
 }) => {
   // получили токен
-  const { accessToken } = getSessionFromStorage() || {};
+  const accessToken = getSessionFromStorage() || {};
 
   // если есть токен то добавили его в header
   if (accessToken) {
