@@ -4,14 +4,17 @@
 }
 
 .wrapper {
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .leftSide {
         width: 470px;
+    }
 
+    .leftSide:first-child {
+        margin-top: 75px;
     }
 
     .rightSide {

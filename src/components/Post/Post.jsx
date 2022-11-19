@@ -7,20 +7,18 @@ function Post({
     return (
         <div className={styles.post}>
             <div className={styles.head}>
-                <IconButton src="res/heart.png" alt="heart" />
+                <IconButton src="res/Heart0.svg" alt="heart" />
                 <h3>{nick}</h3>
             </div>
-            <img width={470} height={587} src="res/photo.jpg" alt="ph" />
+            <img className={styles.mainPhoto} src={"res/" + img} alt="ph" />
             <div className={styles.btns}>
-                <IconButton className={styles.icon} src="res/heart.png" alt="heart" />
-                <IconButton className={styles.icon} src="res/chat.png" alt="comment"/>
+                <IconButton className={styles.icon} src="res/Heart0.svg" alt="heart" />
+                <IconButton className={styles.icon} src="res/Comment.svg" alt="comment"/>
             </div>
             <div className={styles.description}>
                 <p>
-                    <b>egorzhuk._</b>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse 
-                    quae odit delectus unde assumenda mollitia ea consectetur, labore aperiam, ducimus tot
-                    am dolor quidem perspiciatis voluptate aliquid!
+                    <b>{nick + " "}</b>
+                    {description}
                 </p>
             </div>
             <div className={styles.comment}>

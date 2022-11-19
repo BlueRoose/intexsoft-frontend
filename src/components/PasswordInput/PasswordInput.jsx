@@ -1,8 +1,8 @@
-import React from "react";
+import { useState } from "react";
 import Input from "../Input/Input";
 
 function PasswordInput({ onChange }) {
-  const [showed, setShowed] = React.useState(false);
+  const [showed, setShowed] = useState(false);
 
   return (
     <>
