@@ -15,6 +15,7 @@
     h1 {
       font-size: 40px;
       font-family: "Dancing Script", cursive;
+      margin-bottom: 8px;
     }
 
     Input {
@@ -35,7 +36,6 @@
   }
 
 @media (max-width: 476px) {
-  .wrapper {
     .header {
 
       img {
@@ -47,4 +47,3 @@
       }
     }
   }
-}

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { getPosts } from "../api/posts";
 
 export const PostsContext = createContext(null);
 
@@ -7,7 +8,7 @@ export const PostsProvider = ({children}) => {
 
     // Получение постов при загрузке страницы
     useEffect(() => {
-
+        setPosts(getPosts());
     }, []);
 
     const value = {posts, setPosts};

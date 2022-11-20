@@ -3,6 +3,8 @@ import Post from "../../components/Post/Post";
 import styles from "./Posts.module.scss";
 
 function Posts() {
+  
+
   const posts = [
     {
       nick: "egorzhuk._",

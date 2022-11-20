@@ -2,13 +2,14 @@ import { request } from "./createRequest";
 
 // пример запроса авторизации
 export const login = async ({ username, password}) => {
-  const token = await request({
+  const responce = await request({
     url: "/signin",
     data: {
       username,
       password,
     },
   });
+  const token = responce.token;
   localStorage.setItem("token", token);
 };
 

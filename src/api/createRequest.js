@@ -33,7 +33,7 @@ const axiosInstance = axios.create({
       // выполняем запрос
       const result = await axiosInstance(options);
       
-      return result.data.token;
+      return result.data;
     } catch (error) {
       alert(error);
       throw error;
