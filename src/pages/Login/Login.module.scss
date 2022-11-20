@@ -1,5 +1,5 @@
 .login {
-  width: 900px;
+  max-width: 900px;
   height: 550px;
   margin-left: auto;
   margin-right: auto;
@@ -100,6 +100,18 @@
         width: 140px;
         margin-right: 40px;
       }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .login {
+    .insta {
+      display: none;
+    }
+
+    .blocks {
+      margin: 0 auto;
     }
   }
 }

@@ -10,7 +10,9 @@ function Post({
                 <IconButton src="res/Heart0.svg" alt="heart" />
                 <h3>{nick}</h3>
             </div>
-            <img className={styles.mainPhoto} src={"res/" + img} alt="ph" />
+            <div className={styles.photo}>
+                <img className={styles.mainPhoto} src={"res/" + img} alt="ph" />
+            </div>
             <div className={styles.btns}>
                 <IconButton className={styles.icon} src="res/Heart0.svg" alt="heart" />
                 <IconButton className={styles.icon} src="res/Comment.svg" alt="comment"/>
