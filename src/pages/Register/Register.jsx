@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Register.module.scss";
 import Input from "../../components/Input/Input";
@@ -7,7 +7,7 @@ import PasswordInput from "../../components/PasswordInput/PasswordInput";
 import { useAuth } from "../../hooks/useAuth";
 
 function Register() {
-  const [form, setForm] = React.useState({});
+  const [form, setForm] = useState({});
   const navigate = useNavigate();
   const {reg} = useAuth();
 

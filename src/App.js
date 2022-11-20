@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
@@ -20,9 +19,9 @@ function App() {
               exact
               path="/posts"
               element={
-                <RequireAuth>
+                // <RequireAuth>
                   <Posts />
-                </RequireAuth>
+                // </RequireAuth>
               }
             />
           </Routes>

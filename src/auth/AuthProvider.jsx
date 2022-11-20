@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import {login, register} from "../api/user";
 import { getSessionFromStorage } from "../helpers/tokens";
 
-export const AuthContext = React.createContext(null);
+export const AuthContext = createContext(null);
 
 export const AuthProvider = ({children}) => {
-    const [isAuth, setIsAuth] = React.useState(false);
+    const [isAuth, setIsAuth] = useState(false);
     
     useEffect(() => {
-        const accessToken = getSessionFromStorage() || {};
+        const accessToken = getSessionFromStorage() || false;
         if (accessToken) {
             setIsAuth(true);
         }

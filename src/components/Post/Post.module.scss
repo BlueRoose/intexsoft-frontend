@@ -5,10 +5,11 @@
 
 .post {
   background-color: #ffffff;
-  width: 470px;
+  max-width: 470px;
   border: 1px solid #d6d6d6;
   border-radius: 10px;
   margin-bottom: 15px;
+  position: inherit;
 
   .head {
     height: 56px;
@@ -17,13 +18,22 @@
     padding-left: 14px;
 
     img {
-        cursor: pointer;
+      cursor: pointer;
     }
 
     h3 {
       font-size: 14px;
       margin-left: 10px;
       cursor: pointer;
+    }
+  }
+
+  .photo {
+    max-width: 100%;
+
+    .mainPhoto {
+      width: 100%;
+      object-fit: cover;
     }
   }
 
@@ -38,12 +48,12 @@
     display: flex;
 
     p {
-        font-size: 14px;
-        margin-left: 10px;
+      font-size: 14px;
+      margin-left: 10px;
 
-        b {
-            cursor: pointer;
-        }
+      b {
+        cursor: pointer;
+      }
     }
   }
 
