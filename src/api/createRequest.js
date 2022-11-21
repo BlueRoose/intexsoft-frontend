@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
 
   export const request = async ({
     headers = {},
-    method = "POST",
+    method,
     url,
     data,
     params,

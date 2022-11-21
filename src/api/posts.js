@@ -1,11 +1,9 @@
 import { request } from "./createRequest";
 
-export const getPosts = async ({user}) => {
+export const getPosts = async () => {
     const responce = await request({
-        url: "/posts",
-        data: {
-            user,
-        },
+        url: "/allpost",
+        method: "GET",
     });
     return responce.posts;
 };

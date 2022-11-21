@@ -4,6 +4,7 @@ import { request } from "./createRequest";
 export const login = async ({ username, password}) => {
   const responce = await request({
     url: "/signin",
+    method: "POST",
     data: {
       username,
       password,
@@ -16,6 +17,7 @@ export const login = async ({ username, password}) => {
 export const register = async ({ username, password, email, name}) => {
   await request({
     url: "/signup",
+    method: "POST",
     data: {
       username,
       password,
@@ -25,12 +27,3 @@ export const register = async ({ username, password, email, name}) => {
   });
   login({username, password});
 };
-
-// пример запроса получения постов
-// const getPost = ({ login, password }) => {
-//   const { posts } = request({
-//     url: "/posts",
-//   });
-
-//   return posts;
-// };
