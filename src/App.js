@@ -6,10 +6,12 @@ import RequireAuth from "./auth/RequireAuth";
 import { AuthProvider } from "./auth/AuthProvider";
 import Posts from "./pages/Posts/Posts";
 import GuestRoute from "./auth/GuestRoute";
+import { PostsProvider } from "./posts/PostsProvider";
 
 function App() {
   return (
     <AuthProvider>
+      <PostsProvider>
       <BrowserRouter>
         <div className="App">
           <Routes>
@@ -19,14 +21,15 @@ function App() {
               exact
               path="/posts"
               element={
-                // <RequireAuth>
+                <RequireAuth>
                   <Posts />
-                // </RequireAuth>
+                </RequireAuth>
               }
             />
           </Routes>
         </div>
       </BrowserRouter>
+      </PostsProvider>
     </AuthProvider>
   );
 }
