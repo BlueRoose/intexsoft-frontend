@@ -24,9 +24,9 @@ export const AuthProvider = ({children}) => {
         setIsAuth(true);
     };
 
-    const logOut = (cb) => {
+    const logOut = () => {
         setIsAuth(false);
-        cb();
+        localStorage.removeItem("token");
     };
 
     const value = {isAuth, logIn, logOut, reg};
