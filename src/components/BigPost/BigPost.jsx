@@ -1,8 +1,14 @@
 import styles from "./BigPost.module.scss";
 import IconButton from "../IconButton/IconButton";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useContext } from "react";
+import { PostsContext } from "../../posts/PostsProvider";
 
 function BigPost() {
+  const {posts} = useContext(PostsContext);
+  const {id} = useParams();
+  const post = posts.find(post => post._id === id);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
@@ -15,7 +21,7 @@ function BigPost() {
           <div className={styles.info}>
             <div className={styles.head}>
               <IconButton src="res/Heart0.svg" alt="heart" />
-              <h3>egorzhuk._</h3>
+              <h3>{post.postedBy.name}</h3>
             </div>
             <div className={styles.comments}></div>
             <div className={styles.buttons}>
