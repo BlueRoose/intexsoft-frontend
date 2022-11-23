@@ -5,22 +5,11 @@ import styles from "./Posts.module.scss";
 
 function PostsMapping() {
   const { posts, isLoading } = useContext(PostsContext);
-  const [opened, setOpened] = useState(false);
-  const [chosenPhoto, setChosenPhoto] = useState({});
-
-  function handleClick(object) {
-    setChosenPhoto(object);
-    setOpened(true);
-  }
 
   return (
     <>
       {isLoading
-        ? [...Array(8)].map((index) => {
-            return (
-              <Post key={index} nick="user" img={"gray.png"} description="" />
-            );
-          })
+        ? <div className={styles.loader}></div>
         : posts.map(({ item, _id,  body, postedBy }) => {
             return (
               <Post
@@ -29,7 +18,6 @@ function PostsMapping() {
                 nick={postedBy.name}
                 img={"photo.jpg"}
                 description={body}
-                handleClick={handleClick}
               />
             );
           })}
@@ -47,7 +35,6 @@ function Posts() {
           <div className={styles.rightSide}></div>
         </div>
       </div>
-      {/* {opened && <BigPost chosenPhoto={chosenPhoto} setOpened={setOpened} />} */}
     </div>
   );
 }
