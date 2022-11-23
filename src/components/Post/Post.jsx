@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import IconButton from "../IconButton/IconButton";
 import styles from "./Post.module.scss";
 
@@ -9,12 +10,14 @@ function Post({ id, nick, img, description, handleClick }) {
         <h3>{nick}</h3>
       </div>
       <div className={styles.photo}>
+        <Link to={"/posts/" + id}>
           <img
             onClick={() => handleClick({ nick, img, description })}
             className={styles.mainPhoto}
             src={"res/" + img}
             alt="ph"
           />
+        </Link>
       </div>
       <div className={styles.btns}>
         <IconButton className={styles.icon} src="res/Heart0.svg" alt="heart" />

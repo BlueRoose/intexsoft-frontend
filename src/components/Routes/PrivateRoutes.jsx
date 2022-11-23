@@ -1,9 +1,12 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import RequireAuth from "../../auth/RequireAuth";
 import Posts from "../../pages/Posts/Posts";
 import Header from "../Header/Header";
+import BigPost from "../BigPost/BigPost";
 
 function PrivateRoutes() {
+  const {id} = useParams();
+
   return (
     <>
     <Header />
@@ -17,6 +20,7 @@ function PrivateRoutes() {
             </RequireAuth>
           }
         />
+        <Route exact path="posts/:id" element={<BigPost/>}/>
       </Routes>
     </>
   );
