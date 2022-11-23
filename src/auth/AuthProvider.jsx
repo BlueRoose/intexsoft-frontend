@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext } from "react";
-import {login, register} from "../api/user";
-import { getSessionFromStorage } from "../helpers/tokens";
+import * as userApi from "../api/user";
+import { getSessionFromStorage, removeSessionFromStorage } from "../helpers/tokens";
 
 export const AuthContext = createContext(null);
 
@@ -14,22 +14,22 @@ export const AuthProvider = ({children}) => {
         }
     }, []);
 
-    const reg = async (form) => {
-        await register(form);
+    const signUp = async (form) => {
+        await userApi.register(form);
         setIsAuth(true);
     };
 
     const logIn = async (form) => {
-        await login(form);
+        await userApi.login(form);
         setIsAuth(true);
     };
 
     const logOut = () => {
         setIsAuth(false);
-        localStorage.removeItem("token");
+        removeSessionFromStorage();
     };
 
-    const value = {isAuth, logIn, logOut, reg};
+    const value = {isAuth, logIn, logOut, signUp};
 
     return <AuthContext.Provider value={value}>
         {children}
