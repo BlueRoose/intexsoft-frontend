@@ -9,14 +9,14 @@ import { useAuth } from "../../hooks/useAuth";
 function Register() {
   const [form, setForm] = useState({});
   const navigate = useNavigate();
-  const {reg} = useAuth();
+  const {signUp} = useAuth();
 
   const handleChangeForm = ({ name, value }) =>
     setForm({ ...form, [name]: value });
 
   const saveUser = async () => {
     try {
-      reg(form).then(() => navigate("/posts", {replace: true}));
+      signUp(form).then(() => navigate("/posts", {replace: true}));
     } catch (error) {
       alert("Ошибка регистрации");
     }

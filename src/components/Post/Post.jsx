@@ -1,7 +1,7 @@
 import IconButton from "../IconButton/IconButton";
 import styles from "./Post.module.scss";
 
-function Post({ nick, img, description, handleClick}) {
+function Post({ id, nick, img, description, handleClick }) {
   return (
     <div className={styles.post}>
       <div className={styles.head}>
@@ -9,12 +9,12 @@ function Post({ nick, img, description, handleClick}) {
         <h3>{nick}</h3>
       </div>
       <div className={styles.photo}>
-        <img
-          onClick={() => handleClick({nick, img, description})}
-          className={styles.mainPhoto}
-          src={"res/" + img}
-          alt="ph"
-        />
+          <img
+            onClick={() => handleClick({ nick, img, description })}
+            className={styles.mainPhoto}
+            src={"res/" + img}
+            alt="ph"
+          />
       </div>
       <div className={styles.btns}>
         <IconButton className={styles.icon} src="res/Heart0.svg" alt="heart" />
