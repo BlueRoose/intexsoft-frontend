@@ -1,0 +1,47 @@
+.home {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .firstBlock {
+    max-width: 100%;
+    display: flex;
+    margin: 90px auto 44px auto;
+    align-items: center;
+    border-bottom: 1px solid #D6D6D6;
+
+    .avatar {
+      max-width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 20px 50px 50px 150px;
+      cursor: pointer;
+    }
+
+    .info {
+        max-width: 100%;
+        margin-left: 70px;
+        margin-right: 250px;
+
+      .nick {
+        max-width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+
+        h3 {
+          margin-right: 20px;
+        }
+      }
+
+      .stats {
+        width: 400px;
+        display: flex;
+
+        p {
+            margin-right: 10px;
+        }
+      }
+    }
+  }
+}

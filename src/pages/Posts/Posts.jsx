@@ -8,33 +8,31 @@ function PostsMapping() {
 
   return (
     <>
-      {isLoading
-        ? <div className={styles.loader}></div>
-        : posts.map(({ item, _id,  body, postedBy }) => {
-            return (
-              <Post
-                key={item}
-                id={_id}
-                nick={postedBy.name}
-                img={"photo.jpg"}
-                description={body}
-              />
-            );
-          })}
+      {isLoading ? (
+        <div className={styles.loader}></div>
+      ) : (
+        posts.map(({ item, _id, body, postedBy }) => {
+          return (
+            <Post
+              key={item}
+              id={_id}
+              nick={postedBy.name}
+              img={"photo.jpg"}
+              description={body}
+            />
+          );
+        })
+      )}
     </>
   );
 }
 
 function Posts() {
   return (
-    <div>
-      <div>
-        <div className={styles.wrapper}>
-          <div className={styles.leftSide}></div>
-          <PostsMapping />
-          <div className={styles.rightSide}></div>
-        </div>
-      </div>
+    <div className={styles.wrapper}>
+      <div className={styles.leftSide}></div>
+      <PostsMapping />
+      <div className={styles.rightSide}></div>
     </div>
   );
 }
