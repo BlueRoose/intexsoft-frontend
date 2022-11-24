@@ -15,7 +15,7 @@ function Header() {
           <Link to="/posts"><IconButton src="res/Home0.svg" alt="home" /></Link>
           <IconButton src="res/Add.svg" alt="add" />
           <IconButton src="res/Heart0.svg" alt="heart" />
-          <Link to="/home" exact><IconButton src="res/Add.svg" alt="profile" /></Link>
+          <Link to="/home" exact><IconButton src="res/avatar.png" alt="profile" /></Link>
         </div>
       </div>
     </div>

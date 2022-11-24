@@ -6,22 +6,21 @@
   .firstBlock {
     max-width: 100%;
     display: flex;
-    margin: 90px auto 44px auto;
+    margin: 90px auto 22px auto;
+    justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #D6D6D6;
 
     .avatar {
       max-width: 150px;
       height: 150px;
+      margin: 20px 30px 50px 0;
       border-radius: 50%;
-      margin: 20px 50px 50px 150px;
       cursor: pointer;
     }
 
     .info {
-        max-width: 100%;
-        margin-left: 70px;
-        margin-right: 250px;
+      max-width: 100%;
+      margin-left: 50px;
 
       .nick {
         max-width: 100%;
@@ -30,17 +29,54 @@
         align-items: center;
 
         h3 {
+          font-size: 28px;
           margin-right: 20px;
         }
       }
 
       .stats {
-        width: 400px;
+        max-width: 400px;
         display: flex;
 
         p {
-            margin-right: 10px;
+          margin-right: 10px;
         }
+      }
+    }
+  }
+
+  .secondBlock {
+    max-width: 919px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid #D6D6D6;
+    padding-top: 22px; 
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    img {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+@media (max-width: 476px) {
+  .home {
+    .firstBlock {
+      .nick {
+        max-width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .stats {
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
       }
     }
   }

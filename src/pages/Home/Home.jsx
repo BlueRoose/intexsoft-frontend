@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import styles from "./Home.module.scss";
+import {AuthContext} from "../../auth/AuthProvider";
 
 function Home() {
+    const {logOut} = useContext(AuthContext);
     return (
         <div className={styles.home}>
             <div className={styles.firstBlock}>
@@ -8,7 +11,7 @@ function Home() {
                 <div className={styles.info}>
                     <div className={styles.nick}>
                         <h3>egorzhuk._</h3>
-                        <img style={{cursor: "pointer"}} src="res/logout.png" alt="logout" />
+                        <img onClick={() => logOut()} style={{cursor: "pointer"}} src="res/logout.png" alt="logout" />
                     </div>
                     <div className={styles.stats}>
                         <p>Публикации: 4</p>
@@ -18,7 +21,10 @@ function Home() {
                 </div>
             </div>
             <div className={styles.secondBlock}>
-
+                <img src="res/avatar.png" alt="" width={293} height={293}/>
+                <img src="res/avatar.png" alt="" width={293} height={293}/>
+                <img src="res/avatar.png" alt="" width={293} height={293}/>
+                <img src="res/avatar.png" alt="" width={293} height={293}/>
             </div>
         </div>
     );
