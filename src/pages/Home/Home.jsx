@@ -14,7 +14,9 @@ function MyPostsMapping() {
       ) : (
         myPosts.map(({ item, _id, body, postedBy }) => {
           return (
-            <Link to={"/posts/" + _id}><img src="res/avatar.png" alt="" width={293} height={293} /></Link>
+            <Link to={"/posts/" + _id}>
+              <img src="res/avatar.png" alt="" width={293} height={293} />
+            </Link>
           );
         })
       )}

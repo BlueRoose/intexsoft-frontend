@@ -8,7 +8,7 @@ export const getPosts = async () => {
   return posts;
 };
 
-export const addPost = async ({body}) => {
+export const addPost = async ({ body }) => {
   await request({
     url: "/createpost",
     method: "POST",
@@ -19,7 +19,7 @@ export const addPost = async ({body}) => {
 };
 
 export const getMyPosts = async () => {
-  const {mypost} = await request({
+  const { mypost } = await request({
     url: "/mypost",
     method: "GET",
   });
