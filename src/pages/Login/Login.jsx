@@ -4,12 +4,12 @@ import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import styles from "./Login.module.scss";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
-import {useAuth} from "../../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 function Login() {
   const [form, setForm] = useState({});
   const navigate = useNavigate();
-  const {logIn} = useAuth();
+  const { logIn } = useAuth();
 
   const handleChangeForm = ({ name, value }) => {
     setForm({ ...form, [name]: value });
@@ -17,7 +17,7 @@ function Login() {
 
   const handleCheckUser = async () => {
     try {
-      await logIn(form).then(() => navigate("/posts", {replace: true}));
+      await logIn(form).then(() => navigate("/posts", { replace: true }));
     } catch (error) {
       alert("Ошибка входа в аккаунт!");
     }
@@ -43,7 +43,9 @@ function Login() {
           <div className={styles.pass}>
             <PasswordInput onChange={handleChangeForm} />
           </div>
-          <Link to="/posts"><Button onClick={handleCheckUser}>Login</Button></Link>
+          <Link to="/posts">
+            <Button onClick={handleCheckUser}>Login</Button>
+          </Link>
         </div>
         <div className={styles.register}>
           <p>У Вас ещё нет аккаунта?</p>

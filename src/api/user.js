@@ -1,7 +1,7 @@
 import { request } from "./createRequest";
 
 // пример запроса авторизации
-export const login = async ({ username, password}) => {
+export const login = async ({ username, password }) => {
   const responce = await request({
     url: "/signin",
     method: "POST",
@@ -14,7 +14,7 @@ export const login = async ({ username, password}) => {
   localStorage.setItem("token", token);
 };
 
-export const register = async ({ username, password, email, name}) => {
+export const register = async ({ username, password, email, name }) => {
   await request({
     url: "/signup",
     method: "POST",
@@ -25,5 +25,5 @@ export const register = async ({ username, password, email, name}) => {
       name,
     },
   });
-  login({username, password});
+  login({ username, password });
 };

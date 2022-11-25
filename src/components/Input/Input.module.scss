@@ -1,45 +1,45 @@
 .input {
-    width: 300px;
-    height: 40px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    font-size: 18px;
-    color: #000000;
-    text-align: center;
-    outline: none;
-    margin-bottom: 20px;
-    margin-right: 4px;
+  width: 300px;
+  height: 40px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #000000;
+  text-align: center;
+  outline: none;
+  margin-bottom: 20px;
+  margin-right: 4px;
 }
 
 ::-webkit-input-placeholder {
-    color: gray;
-    text-align: center;
- }
- :-moz-placeholder {
-    color: gray;
-    text-align: center;
- }
- ::-moz-placeholder {
-    color: gray;
-    text-align: center;
- }
- :-ms-input-placeholder {
-    color: gray;
-    text-align: center;
- }
+  color: gray;
+  text-align: center;
+}
+:-moz-placeholder {
+  color: gray;
+  text-align: center;
+}
+::-moz-placeholder {
+  color: gray;
+  text-align: center;
+}
+:-ms-input-placeholder {
+  color: gray;
+  text-align: center;
+}
 
- :focus::-webkit-input-placeholder {
-    color: transparent;
-  }
-  
-  :focus::-moz-placeholder {
-    color: transparent;
-  }
-  
-  :focus:-moz-placeholder {
-    color: transparent;
-  }
-  
-  :focus:-ms-input-placeholder {
-    color: transparent;
-  }
+:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+:focus::-moz-placeholder {
+  color: transparent;
+}
+
+:focus:-moz-placeholder {
+  color: transparent;
+}
+
+:focus:-ms-input-placeholder {
+  color: transparent;
+}

@@ -7,7 +7,7 @@
   max-width: 900px;
   height: 650px;
   background-color: #ffffff;
-  border: 1px solid #D6D6D6;
+  border: 1px solid #d6d6d6;
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -16,7 +16,7 @@
   align-items: center;
 
   .logo {
-    border-right: 1px solid #D6D6D6;
+    border-right: 1px solid #d6d6d6;
 
     h1 {
       font-size: 48px;
@@ -124,30 +124,30 @@
 }
 
 @media (max-width: 900px) {
- .register {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  .logo {
-    display: none;
-  }
-
-  .fields {
-    max-width: 100%;
+  .register {
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
+    .logo {
+      display: none;
+    }
 
-    .inputs {
+    .fields {
       max-width: 100%;
       margin-left: auto;
       margin-right: auto;
-    }
 
-    .badges {
-      width: 100%;
-      margin-left: auto;
-      margin-right: auto;
+      .inputs {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .badges {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
   }
- } 
 }

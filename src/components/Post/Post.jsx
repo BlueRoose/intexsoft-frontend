@@ -11,11 +11,7 @@ function Post({ id, nick, img, description }) {
       </div>
       <div className={styles.photo}>
         <Link to={"/posts/" + id}>
-          <img
-            className={styles.mainPhoto}
-            src={"res/" + img}
-            alt="ph"
-          />
+          <img className={styles.mainPhoto} src={"res/" + img} alt="ph" />
         </Link>
       </div>
       <div className={styles.btns}>

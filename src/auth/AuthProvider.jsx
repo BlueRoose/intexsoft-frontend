@@ -1,37 +1,38 @@
 import { useState, useEffect, createContext } from "react";
 import * as userApi from "../api/user";
-import { getSessionFromStorage, removeSessionFromStorage } from "../helpers/tokens";
+import {
+  getSessionFromStorage,
+  removeSessionFromStorage,
+} from "../helpers/tokens";
 
 export const AuthContext = createContext(null);
 
-export const AuthProvider = ({children}) => {
-    const [isAuth, setIsAuth] = useState(false);
-    
-    useEffect(() => {
-        const accessToken = getSessionFromStorage() || false;
-        if (accessToken) {
-            setIsAuth(true);
-        }
-    }, []);
+export const AuthProvider = ({ children }) => {
+  const [isAuth, setIsAuth] = useState(false);
 
-    const signUp = async (form) => {
-        await userApi.register(form);
-        setIsAuth(true);
-    };
+  useEffect(() => {
+    const accessToken = getSessionFromStorage() || false;
+    if (accessToken) {
+      setIsAuth(true);
+    }
+  }, []);
 
-    const logIn = async (form) => {
-        await userApi.login(form);
-        setIsAuth(true);
-    };
+  const signUp = async (form) => {
+    await userApi.register(form);
+    setIsAuth(true);
+  };
 
-    const logOut = () => {
-        setIsAuth(false);
-        removeSessionFromStorage();
-    };
+  const logIn = async (form) => {
+    await userApi.login(form);
+    setIsAuth(true);
+  };
 
-    const value = {isAuth, logIn, logOut, signUp};
+  const logOut = () => {
+    setIsAuth(false);
+    removeSessionFromStorage();
+  };
 
-    return <AuthContext.Provider value={value}>
-        {children}
-    </AuthContext.Provider>;
+  const value = { isAuth, logIn, logOut, signUp };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

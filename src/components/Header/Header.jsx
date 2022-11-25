@@ -1,12 +1,9 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../auth/AuthProvider";
 import IconButton from "../IconButton/IconButton";
 import Input from "../Input/Input";
 import styles from "./Header.module.scss";
 
 function Header() {
-  const {logOut} = useContext(AuthContext);
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -15,10 +12,14 @@ function Header() {
         </Link>
         <Input type="text" name="search" placeholder="Поиск" />
         <div className={styles.btns}>
-          <IconButton src="res/Home0.svg" alt="home" />
-          <IconButton src="res/Add.svg" alt="add" />
+          <Link to="/posts">
+            <IconButton src="res/Home0.svg" alt="home" />
+          </Link>
+          <Link to="/newpost"><IconButton src="res/Add.svg" alt="add" /></Link>
           <IconButton src="res/Heart0.svg" alt="heart" />
-          <IconButton logout={logOut}src="res/Add.svg" alt="profile" />
+          <Link to="/home">
+            <IconButton src="res/avatar.png" alt="profile" />
+          </Link>
         </div>
       </div>
     </div>
