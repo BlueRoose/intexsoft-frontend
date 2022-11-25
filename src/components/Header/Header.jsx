@@ -12,10 +12,14 @@ function Header() {
         </Link>
         <Input type="text" name="search" placeholder="Поиск" />
         <div className={styles.btns}>
-          <Link to="/posts"><IconButton src="res/Home0.svg" alt="home" /></Link>
-          <IconButton src="res/Add.svg" alt="add" />
+          <Link to="/posts">
+            <IconButton src="res/Home0.svg" alt="home" />
+          </Link>
+          <Link to="/newpost"><IconButton src="res/Add.svg" alt="add" /></Link>
           <IconButton src="res/Heart0.svg" alt="heart" />
-          <Link to="/home" exact><IconButton src="res/avatar.png" alt="profile" /></Link>
+          <Link to="/home">
+            <IconButton src="res/avatar.png" alt="profile" />
+          </Link>
         </div>
       </div>
     </div>

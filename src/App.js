@@ -14,7 +14,7 @@ function App() {
           <div className="App">
             <GuestRoutes />
             <RequireAuth>
-            <PrivateRoutes />
+              <PrivateRoutes />
             </RequireAuth>
           </div>
         </BrowserRouter>

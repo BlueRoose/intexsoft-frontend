@@ -15,7 +15,7 @@ export const PostsProvider = ({ children }) => {
     });
   }, []);
 
-  const value = {posts, isLoading};
+  const value = { posts, isLoading };
 
   return (
     <PostsContext.Provider value={value}>{children}</PostsContext.Provider>
