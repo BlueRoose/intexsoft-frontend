@@ -17,3 +17,12 @@ export const addPost = async ({body}) => {
     },
   });
 };
+
+export const getMyPosts = async () => {
+  const {mypost} = await request({
+    url: "/mypost",
+    method: "GET",
+  });
+  console.log(mypost);
+  return mypost;
+};

@@ -1,9 +1,30 @@
 import { useContext } from "react";
 import styles from "./Home.module.scss";
 import { AuthContext } from "../../auth/AuthProvider";
+import { PostsContext } from "../../posts/PostsProvider";
+import { Link } from "react-router-dom";
+
+function MyPostsMapping() {
+  const { myPosts, isLoading } = useContext(PostsContext);
+
+  return (
+    <>
+      {isLoading ? (
+        <div className={styles.loader}></div>
+      ) : (
+        myPosts.map(({ item, _id, body, postedBy }) => {
+          return (
+            <Link to={"/posts/" + _id}><img src="res/avatar.png" alt="" width={293} height={293} /></Link>
+          );
+        })
+      )}
+    </>
+  );
+}
 
 function Home() {
   const { logOut } = useContext(AuthContext);
+
   return (
     <div className={styles.home}>
       <div className={styles.firstBlock}>
@@ -26,10 +47,7 @@ function Home() {
         </div>
       </div>
       <div className={styles.secondBlock}>
-        <img src="res/avatar.png" alt="" width={293} height={293} />
-        <img src="res/avatar.png" alt="" width={293} height={293} />
-        <img src="res/avatar.png" alt="" width={293} height={293} />
-        <img src="res/avatar.png" alt="" width={293} height={293} />
+        <MyPostsMapping />
       </div>
     </div>
   );
