@@ -1,4 +1,4 @@
-import { Routes, Route, useParams } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Posts from "../../pages/Posts/Posts";
 import Post from "../../pages/Post/Post";
 import Home from "../../pages/Home/Home";
@@ -6,7 +6,6 @@ import CreatePost from "../../pages/CreatePost/CreatePost";
 import RequireAuth from "../../auth/RequireAuth";
 
 function PrivateRoutes() {
-  const { id } = useParams();
 
   return (
       <Routes>
