@@ -13,9 +13,7 @@ function App() {
         <BrowserRouter>
           <div className="App">
             <GuestRoutes />
-            <RequireAuth>
-              <PrivateRoutes />
-            </RequireAuth>
+            <PrivateRoutes />
           </div>
         </BrowserRouter>
       </PostsProvider>

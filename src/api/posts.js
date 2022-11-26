@@ -23,6 +23,5 @@ export const getMyPosts = async () => {
     url: "/mypost",
     method: "GET",
   });
-  console.log(mypost);
   return mypost;
 };

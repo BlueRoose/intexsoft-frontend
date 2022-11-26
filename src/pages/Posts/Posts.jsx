@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import Header from "../../components/Header/Header";
 import Post from "../../components/Post/Post";
 import { PostsContext } from "../../posts/PostsProvider";
 import styles from "./Posts.module.scss";
@@ -29,11 +30,14 @@ function PostsMapping() {
 
 function Posts() {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.leftSide}></div>
-      <PostsMapping />
-      <div className={styles.rightSide}></div>
-    </div>
+    <>
+      <Header />
+      <div className={styles.wrapper}>
+        <div className={styles.leftSide}></div>
+        <PostsMapping />
+        <div className={styles.rightSide}></div>
+      </div>
+    </>
   );
 }
 

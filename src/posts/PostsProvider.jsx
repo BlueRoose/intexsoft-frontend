@@ -8,7 +8,6 @@ export const PostsProvider = ({ children }) => {
   const [myPosts, setMyPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Получение постов при загрузке страницы
   useEffect(() => {
     getPosts().then((posts) => {
       setPosts(posts);
@@ -18,7 +17,7 @@ export const PostsProvider = ({ children }) => {
       setMyPosts(myPosts);
       setIsLoading(false);
     });
-  }, []);
+  }, [setPosts, setIsLoading, setMyPosts]);
 
   const value = { posts, myPosts, isLoading };
 
