@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 
 function MyPostsMapping() {
-  const { myPosts, isLoading } = useContext(PostsContext);
+  const { myPosts, isMyPostsLoading } = useContext(PostsContext);
 
   return (
     <>
-      {isLoading ? (
+      {isMyPostsLoading ? (
         <div className={styles.loader}></div>
       ) : (
         myPosts.map(({ item, _id, body, postedBy }) => {

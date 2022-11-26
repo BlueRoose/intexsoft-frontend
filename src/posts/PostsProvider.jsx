@@ -6,20 +6,21 @@ export const PostsContext = createContext(null);
 export const PostsProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [myPosts, setMyPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isPostsLoading, setIsPostsLoading] = useState(true);
+  const [isMyPostsLoading, setIsMyPostsLoading] = useState(true);
 
   useEffect(() => {
     getPosts().then((posts) => {
       setPosts(posts);
-      setIsLoading(false);
+      setIsPostsLoading(false);
     });
     getMyPosts().then((myPosts) => {
       setMyPosts(myPosts);
-      setIsLoading(false);
+      setIsMyPostsLoading(false);
     });
-  }, [setPosts, setIsLoading, setMyPosts]);
+  }, [setPosts, setIsPostsLoading, setMyPosts, setIsMyPostsLoading]);
 
-  const value = { posts, myPosts, isLoading };
+  const value = { posts, myPosts, isPostsLoading, isMyPostsLoading };
 
   return (
     <PostsContext.Provider value={value}>{children}</PostsContext.Provider>

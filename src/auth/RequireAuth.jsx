@@ -6,7 +6,7 @@ function RequireAuth() {
   const { isAuth } = useAuth();
 
   return(
-    isAuth ? <Outlet/> : <Navigate to="/login"/>
+    isAuth ? <Outlet/> : <Navigate to="/login" state={{from: location}}/>
 );
 }
 

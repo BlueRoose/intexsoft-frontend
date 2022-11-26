@@ -5,11 +5,11 @@ import { PostsContext } from "../../posts/PostsProvider";
 import styles from "./Posts.module.scss";
 
 function PostsMapping() {
-  const { posts, isLoading } = useContext(PostsContext);
+  const { posts, isPostsLoading } = useContext(PostsContext);
 
   return (
     <>
-      {isLoading ? (
+      {isPostsLoading ? (
         <div className={styles.loader}></div>
       ) : (
         posts.map(({ item, _id, body, postedBy }) => {
