@@ -2,7 +2,7 @@ import axios from "axios";
 import { getSessionFromStorage } from "../helpers/tokens";
 
 const axiosInstance = axios.create({
-  baseURL: "https://intexgrambackend.herokuapp.com",
+  baseURL: "https://backendick.herokuapp.com/",
 });
 
 export const request = async ({ headers = {}, method, url, data, params }) => {
