@@ -1,12 +1,20 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./Home.module.scss";
 import { AuthContext } from "../../auth/AuthProvider";
 import { PostsContext } from "../../posts/PostsProvider";
+import { getMyPosts } from "../../api/posts";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 
 function MyPostsMapping() {
-  const { myPosts, isMyPostsLoading } = useContext(PostsContext);
+  const { myPosts, isMyPostsLoading, setMyPosts, setIsMyPostsLoading } = useContext(PostsContext);
+
+  useEffect(() => {
+    getMyPosts().then((myPosts) => {
+      setMyPosts(myPosts);
+      setIsMyPostsLoading(false);
+    });
+  }, [setIsMyPostsLoading, setMyPosts]);
 
   return (
     <>

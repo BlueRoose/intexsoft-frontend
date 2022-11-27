@@ -1,5 +1,4 @@
-import { createContext, useEffect, useState } from "react";
-import { getMyPosts, getPosts } from "../api/posts";
+import { createContext, useState } from "react";
 
 export const PostsContext = createContext(null);
 
@@ -9,18 +8,7 @@ export const PostsProvider = ({ children }) => {
   const [isPostsLoading, setIsPostsLoading] = useState(true);
   const [isMyPostsLoading, setIsMyPostsLoading] = useState(true);
 
-  useEffect(() => {
-    getPosts().then((posts) => {
-      setPosts(posts);
-      setIsPostsLoading(false);
-    });
-    getMyPosts().then((myPosts) => {
-      setMyPosts(myPosts);
-      setIsMyPostsLoading(false);
-    });
-  }, [setPosts, setIsPostsLoading, setMyPosts, setIsMyPostsLoading]);
-
-  const value = { posts, myPosts, isPostsLoading, isMyPostsLoading };
+  const value = { posts, myPosts, isPostsLoading, isMyPostsLoading, setPosts, setIsPostsLoading, setMyPosts, setIsMyPostsLoading };
 
   return (
     <PostsContext.Provider value={value}>{children}</PostsContext.Provider>
