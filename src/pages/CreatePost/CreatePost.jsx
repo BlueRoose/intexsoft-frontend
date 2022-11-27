@@ -8,8 +8,8 @@ function CreatePost() {
   const [body, setBody] = useState({});
   const navigate = useNavigate();
 
-  const handleChangeForm = (value) => {
-    setBody({ ...body, ["body"]: value });
+  const handleChangeForm = (obj) => {
+    setBody({ ...body, obj});
   };
 
   const addNewPost = async () => {
@@ -46,7 +46,7 @@ function CreatePost() {
               <textarea
                 name="body"
                 placeholder="Добавьте подпись..."
-                onChange={(event) => handleChangeForm(event.target.value)}
+                onChange={(event) => handleChangeForm({"body": event.target.value})}
               ></textarea>
             </div>
           </div>
