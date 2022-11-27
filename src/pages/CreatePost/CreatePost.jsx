@@ -16,7 +16,7 @@ function CreatePost() {
     try {
       await addPost(body);
       alert("Успех!");
-      navigate("/posts", {replace: true});
+      navigate("/posts", {});
     } catch (error) {
     }
   };

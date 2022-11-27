@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     if (accessToken) {
       setIsAuth(true);
     }
-  }, []);
+  }, [setIsAuth]);
 
   const signUp = async (form) => {
     await userApi.register(form);

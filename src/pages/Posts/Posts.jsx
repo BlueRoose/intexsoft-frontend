@@ -1,14 +1,22 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
+import Header from "../../components/Header/Header";
 import Post from "../../components/Post/Post";
 import { PostsContext } from "../../posts/PostsProvider";
+import { getPosts } from "../../api/posts";
 import styles from "./Posts.module.scss";
 
 function PostsMapping() {
-  const { posts, isLoading } = useContext(PostsContext);
+  const { posts, isPostsLoading, setPosts, setIsPostsLoading } = useContext(PostsContext);
+  useEffect(() => {
+    getPosts().then((posts) => {
+      setPosts(posts);
+      setIsPostsLoading(false);
+    });
+  }, [setIsPostsLoading, setPosts]);
 
   return (
     <>
-      {isLoading ? (
+      {isPostsLoading ? (
         <div className={styles.loader}></div>
       ) : (
         posts.map(({ item, _id, body, postedBy }) => {
@@ -29,11 +37,14 @@ function PostsMapping() {
 
 function Posts() {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.leftSide}></div>
-      <PostsMapping />
-      <div className={styles.rightSide}></div>
-    </div>
+    <>
+      <Header />
+      <div className={styles.wrapper}>
+        <div className={styles.leftSide}></div>
+        <PostsMapping />
+        <div className={styles.rightSide}></div>
+      </div>
+    </>
   );
 }
 

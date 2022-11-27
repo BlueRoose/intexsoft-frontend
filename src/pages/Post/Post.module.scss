@@ -12,7 +12,7 @@
 
   .post {
     max-width: 1000px;
-    height: 100%;
+    height: 700px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
@@ -30,19 +30,25 @@
     .info {
       max-width: 45%;
       .head {
-        max-width: 100%;
         display: flex;
+        justify-content: space-between;
         border-bottom: 1px solid #d6d6d6;
         align-items: center;
-        padding: 10px;
 
-        img {
-          margin-right: 10px;
+        .user {
+          max-width: 100%;
+          display: flex;
+          align-items: center;
+          padding: 10px;
+
+          img {
+            margin-right: 10px;
+          }
         }
       }
 
       .comments {
-        height: 570px;
+        height: 565px;
         border-bottom: 1px solid #d6d6d6;
       }
 

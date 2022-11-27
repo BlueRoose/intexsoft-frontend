@@ -1,26 +1,14 @@
-import { createContext, useEffect, useState } from "react";
-import { getMyPosts, getPosts } from "../api/posts";
+import { createContext, useState } from "react";
 
 export const PostsContext = createContext(null);
 
 export const PostsProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [myPosts, setMyPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isPostsLoading, setIsPostsLoading] = useState(true);
+  const [isMyPostsLoading, setIsMyPostsLoading] = useState(true);
 
-  // Получение постов при загрузке страницы
-  useEffect(() => {
-    getPosts().then((posts) => {
-      setPosts(posts);
-      setIsLoading(false);
-    });
-    getMyPosts().then((myPosts) => {
-      setMyPosts(myPosts);
-      setIsLoading(false);
-    });
-  }, []);
-
-  const value = { posts, myPosts, isLoading };
+  const value = { posts, myPosts, isPostsLoading, isMyPostsLoading, setPosts, setIsPostsLoading, setMyPosts, setIsMyPostsLoading };
 
   return (
     <PostsContext.Provider value={value}>{children}</PostsContext.Provider>

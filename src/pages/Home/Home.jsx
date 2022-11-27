@@ -1,15 +1,24 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./Home.module.scss";
 import { AuthContext } from "../../auth/AuthProvider";
 import { PostsContext } from "../../posts/PostsProvider";
+import { getMyPosts } from "../../api/posts";
 import { Link } from "react-router-dom";
+import Header from "../../components/Header/Header";
 
 function MyPostsMapping() {
-  const { myPosts, isLoading } = useContext(PostsContext);
+  const { myPosts, isMyPostsLoading, setMyPosts, setIsMyPostsLoading } = useContext(PostsContext);
+
+  useEffect(() => {
+    getMyPosts().then((myPosts) => {
+      setMyPosts(myPosts);
+      setIsMyPostsLoading(false);
+    });
+  }, [setIsMyPostsLoading, setMyPosts]);
 
   return (
     <>
-      {isLoading ? (
+      {isMyPostsLoading ? (
         <div className={styles.loader}></div>
       ) : (
         myPosts.map(({ item, _id, body, postedBy }) => {
@@ -29,6 +38,7 @@ function Home() {
 
   return (
     <div className={styles.home}>
+      <Header />
       <div className={styles.firstBlock}>
         <img className={styles.avatar} src="res/avatar.png" alt="avatar" />
         <div className={styles.info}>
