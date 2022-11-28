@@ -6,7 +6,8 @@ import { getPosts } from "../../api/posts";
 import styles from "./Posts.module.scss";
 
 function PostsMapping() {
-  const { posts, isPostsLoading, setPosts, setIsPostsLoading } = useContext(PostsContext);
+  const { posts, isPostsLoading, setPosts, setIsPostsLoading } =
+    useContext(PostsContext);
   useEffect(() => {
     getPosts().then((posts) => {
       setPosts(posts);

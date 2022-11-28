@@ -18,7 +18,9 @@ function Login() {
 
   const handleCheckUser = async () => {
     try {
-      await logIn(form).then(() => navigate(location.state?.from?.pathname || "/", { replace: true }));
+      await logIn(form).then(() =>
+        navigate(location.state?.from?.pathname || "/", { replace: true })
+      );
     } catch (error) {
       alert("Ошибка входа в аккаунт!");
     }

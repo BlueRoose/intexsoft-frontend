@@ -8,7 +8,16 @@ export const PostsProvider = ({ children }) => {
   const [isPostsLoading, setIsPostsLoading] = useState(true);
   const [isMyPostsLoading, setIsMyPostsLoading] = useState(true);
 
-  const value = { posts, myPosts, isPostsLoading, isMyPostsLoading, setPosts, setIsPostsLoading, setMyPosts, setIsMyPostsLoading };
+  const value = {
+    posts,
+    myPosts,
+    isPostsLoading,
+    isMyPostsLoading,
+    setPosts,
+    setIsPostsLoading,
+    setMyPosts,
+    setIsMyPostsLoading,
+  };
 
   return (
     <PostsContext.Provider value={value}>{children}</PostsContext.Provider>

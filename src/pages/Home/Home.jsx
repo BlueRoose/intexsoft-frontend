@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 
 function MyPostsMapping() {
-  const { myPosts, isMyPostsLoading, setMyPosts, setIsMyPostsLoading } = useContext(PostsContext);
+  const { myPosts, isMyPostsLoading, setMyPosts, setIsMyPostsLoading } =
+    useContext(PostsContext);
 
   useEffect(() => {
     getMyPosts().then((myPosts) => {
