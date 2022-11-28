@@ -21,23 +21,17 @@ function Post() {
         <div className={styles.info}>
           <div className={styles.head}>
             <div className={styles.user}>
-            <IconButton src={avatar} alt="heart" />
-            <h3>{post.postedBy.name}</h3>
+              <IconButton src={avatar} alt="heart" />
+              <h3>{post.postedBy.name}</h3>
             </div>
-            <Link to="/posts"><img width={48} height={48} src={cross} alt="cross" /></Link>
+            <Link to="/posts">
+              <img width={48} height={48} src={cross} alt="cross" />
+            </Link>
           </div>
           <div className={styles.comments}></div>
           <div className={styles.buttons}>
-            <IconButton
-              className={styles.icon}
-              src={like}
-              alt="heart"
-            />
-            <IconButton
-              className={styles.icon}
-              src={comment}
-              alt="comment"
-            />
+            <IconButton className={styles.icon} src={like} alt="heart" />
+            <IconButton className={styles.icon} src={comment} alt="comment" />
           </div>
           <div className={styles.comment}>
             <textarea placeholder="Добавьте комментарий..."></textarea>
