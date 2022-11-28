@@ -2,7 +2,7 @@ import axios from "axios";
 import { getSessionFromStorage } from "../helpers/tokens";
 
 const axiosInstance = axios.create({
-  baseURL: "https://backendick.herokuapp.com/",
+  baseURL: "http://localhost:5000",
 });
 
 export const request = async ({ headers = {}, method, url, data, params }) => {
