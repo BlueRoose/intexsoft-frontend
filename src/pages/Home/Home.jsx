@@ -36,6 +36,7 @@ function MyPostsMapping() {
 
 function Home() {
   const { logOut } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <div className={styles.home}>
@@ -44,7 +45,7 @@ function Home() {
         <img className={styles.avatar} src="res/avatar.png" alt="avatar" />
         <div className={styles.info}>
           <div className={styles.nick}>
-            <h3>egorzhuk._</h3>
+            <h3>{user.name}</h3>
             <img
               onClick={() => logOut()}
               style={{ cursor: "pointer" }}

@@ -9,6 +9,7 @@ export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [isAuth, setIsAuth] = useState(false);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const accessToken = getSessionFromStorage() || false;
@@ -23,7 +24,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logIn = async (form) => {
-    await userApi.login(form);
+    setUser(await userApi.login(form));
     setIsAuth(true);
   };
 
@@ -32,7 +33,7 @@ export const AuthProvider = ({ children }) => {
     removeSessionFromStorage();
   };
 
-  const value = { isAuth, logIn, logOut, signUp };
+  const value = { isAuth, logIn, logOut, signUp, user };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
