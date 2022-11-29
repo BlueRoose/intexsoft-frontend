@@ -1,3 +1,4 @@
+import { addSessionToStorage } from "../helpers/tokens";
 import { request } from "./createRequest";
 
 // пример запроса авторизации
@@ -11,7 +12,8 @@ export const login = async ({ username, password }) => {
     },
   });
   const token = responce.token;
-  localStorage.setItem("token", token);
+  addSessionToStorage(token);
+  return responce.user;
 };
 
 export const register = async ({ username, password, email, name }) => {
