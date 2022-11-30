@@ -11,8 +11,8 @@ function App() {
       <PostsProvider>
         <BrowserRouter>
           <div className="App">
-            <GuestRoutes />
             <PrivateRoutes />
+            <GuestRoutes />
           </div>
         </BrowserRouter>
       </PostsProvider>

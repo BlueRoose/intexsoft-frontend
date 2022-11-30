@@ -1,19 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Header from "../../components/Header/Header";
 import Post from "../../components/Post/Post";
 import { PostsContext } from "../../posts/PostsProvider";
-import { getPosts } from "../../api/posts";
 import styles from "./Posts.module.scss";
 
 function PostsMapping() {
-  const { posts, isPostsLoading, setPosts, setIsPostsLoading } =
+  const { posts, isPostsLoading} =
     useContext(PostsContext);
-  useEffect(() => {
-    getPosts().then((posts) => {
-      setPosts(posts);
-      setIsPostsLoading(false);
-    });
-  }, [setIsPostsLoading, setPosts]);
 
   return (
     <>

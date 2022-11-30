@@ -19,7 +19,7 @@ function Header() {
             <IconButton src="res/Add.svg" alt="add" />
           </Link>
           <IconButton src="res/Heart0.svg" alt="heart" />
-          <Link to="/home">
+          <Link to="/home" replace={true}>
             <IconButton src="res/avatar.png" alt="profile" />
           </Link>
         </div>

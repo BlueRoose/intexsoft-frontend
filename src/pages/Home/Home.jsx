@@ -1,21 +1,13 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import styles from "./Home.module.scss";
 import { AuthContext } from "../../auth/AuthProvider";
 import { PostsContext } from "../../posts/PostsProvider";
-import { getMyPosts } from "../../api/posts";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 
 function MyPostsMapping() {
-  const { myPosts, isMyPostsLoading, setMyPosts, setIsMyPostsLoading } =
+  const { myPosts, isMyPostsLoading } =
     useContext(PostsContext);
-
-  useEffect(() => {
-    getMyPosts().then((myPosts) => {
-      setMyPosts(myPosts);
-      setIsMyPostsLoading(false);
-    });
-  }, [setIsMyPostsLoading, setMyPosts]);
 
   return (
     <>
@@ -61,7 +53,9 @@ function Home() {
         </div>
       </div>
       <div className={styles.secondBlock}>
-        <MyPostsMapping />
+        <div className={styles.logos}>
+          <MyPostsMapping />
+        </div>
       </div>
     </div>
   );
