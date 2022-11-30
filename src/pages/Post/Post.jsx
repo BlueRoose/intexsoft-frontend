@@ -20,7 +20,7 @@ function Post() {
           <div className={styles.head}>
             <div className={styles.user}>
               <IconButton src={avatar} alt="heart" />
-              <h3>{post.postedBy.name}</h3>
+              <h3>{post?.postedBy?.name}</h3>
             </div>
             <Link to="/posts">
               <img width={48} height={48} src={cross} alt="cross" />

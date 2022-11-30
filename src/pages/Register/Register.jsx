@@ -9,18 +9,23 @@ import { Alert } from "@mui/material";
 
 function Register() {
   const [form, setForm] = useState({});
-  const [error, setError] = useState("12");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const { signUp } = useAuth();
 
   const handleChangeForm = ({ name, value }) =>
     setForm({ ...form, [name]: value });
 
-  const saveUser = () => {
+  const saveUser = async () => {
     try {
-      signUp(form).then(() => navigate("/posts", { replace: true }));
+      await signUp(form);
+      navigate("/posts", { replace: true });
     } catch (err) {
-      alert("Ошибка!");
+      setError("Ошибка регистрации! Повторите попытку!");
+
+      setTimeout(() => {
+        setError("");
+      }, 3000);
     }
   };
 
@@ -56,7 +61,7 @@ function Register() {
           <div className={styles.pass}>
             <PasswordInput onChange={handleChangeForm} />
           </div>
-          {error && <Alert severity="error">Ошибка регистрации! Повторите попытку!</Alert>}
+          {error && <Alert severity="error">{error}</Alert>}
           <p className={styles.par}>
             Регистрируясь, вы принимаете наши Условия, Политику
             конфиденциальности и Политику в отношении файлов cookie.

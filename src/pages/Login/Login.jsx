@@ -9,7 +9,7 @@ import { Alert } from "@mui/material";
 
 function Login() {
   const [form, setForm] = useState({});
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
   const { logIn } = useAuth();
@@ -18,58 +18,57 @@ function Login() {
     setForm({ ...form, [name]: value });
   };
 
-  const handleCheckUser = () => {
+  const handleCheckUser = async () => {
     try {
-      logIn(form).then((data) => {
-        navigate(location.state?.from?.pathname || "/", { replace: true });
-      });
-    } catch (error) {
-      alert(error);
+      await logIn(form);
+      navigate(location.state?.from?.pathname || "/", { replace: true });
+    } catch (err) {
+      setError("Ошибка входа в аккаунт! Повторите попытку!");
     }
   };
 
   return (
-      <div className={styles.login}>
-        <img
-          src="res/inst.jpg"
-          alt="people"
-          height={550}
-          className={styles.insta}
-        />
-        <div className={styles.blocks}>
-          <div className={styles.fields}>
-            <h1>Intexgram</h1>
-            <Input
-              type="text"
-              name="username"
-              placeholder="Введите логин"
-              onChange={handleChangeForm}
-            />
-            <div className={styles.pass}>
-              <PasswordInput onChange={handleChangeForm} />
-            </div>
-            <Link to="/posts">
-              <Button onClick={handleCheckUser}>Login</Button>
-            </Link>
-            {error && <Alert severity="error">Ошибка регистрации! Повторите попытку!</Alert>}
+    <div className={styles.login}>
+      <img
+        src="res/inst.jpg"
+        alt="people"
+        height={550}
+        className={styles.insta}
+      />
+      <div className={styles.blocks}>
+        <div className={styles.fields}>
+          <h1>Intexgram</h1>
+          <Input
+            type="text"
+            name="username"
+            placeholder="Введите логин"
+            onChange={handleChangeForm}
+          />
+          <div className={styles.pass}>
+            <PasswordInput onChange={handleChangeForm} />
           </div>
-          <div className={styles.register}>
-            <p>У Вас ещё нет аккаунта?</p>
-            <Link to="/register" style={{ textDecoration: "none" }}>
-              <p>Зарегистрироваться</p>
-            </Link>
-          </div>
-          <p className={styles.app}>Установите наше приложение</p>
-          <div className={styles.badges}>
-            <img src="res/google.png" alt="apple" className={styles.badge} />
-            <img
-              src="res/microsoft.png"
-              alt="google"
-              className={styles.badge}
-            />
-          </div>
+          {error && (
+            <Alert severity="error">
+              Ошибка регистрации! Повторите попытку!
+            </Alert>
+          )}
+          <Link to="/posts">
+            <Button onClick={handleCheckUser}>Login</Button>
+          </Link>
+        </div>
+        <div className={styles.register}>
+          <p>У Вас ещё нет аккаунта?</p>
+          <Link to="/register" style={{ textDecoration: "none" }}>
+            <p>Зарегистрироваться</p>
+          </Link>
+        </div>
+        <p className={styles.app}>Установите наше приложение</p>
+        <div className={styles.badges}>
+          <img src="res/google.png" alt="apple" className={styles.badge} />
+          <img src="res/microsoft.png" alt="google" className={styles.badge} />
         </div>
       </div>
+    </div>
   );
 }
 

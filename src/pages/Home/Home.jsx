@@ -4,6 +4,7 @@ import { AuthContext } from "../../auth/AuthProvider";
 import { PostsContext } from "../../posts/PostsProvider";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import { getUserFromStorage } from "../../helpers/users";
 
 function MyPostsMapping() {
   const { myPosts, isMyPostsLoading } =
@@ -28,7 +29,7 @@ function MyPostsMapping() {
 
 function Home() {
   const { logOut } = useContext(AuthContext);
-  const { user } = useContext(AuthContext);
+  const user = JSON.parse(getUserFromStorage());
 
   return (
     <div className={styles.home}>
