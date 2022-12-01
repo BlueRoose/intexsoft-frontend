@@ -2,13 +2,14 @@ import { useContext } from "react";
 import styles from "./Home.module.scss";
 import { AuthContext } from "../../auth/AuthProvider";
 import { PostsContext } from "../../posts/PostsProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { getUserFromStorage } from "../../helpers/users";
 
 function MyPostsMapping() {
   const { myPosts, isMyPostsLoading } =
     useContext(PostsContext);
+  const location = useLocation();
 
   return (
     <>
@@ -17,7 +18,7 @@ function MyPostsMapping() {
       ) : (
         myPosts.map(({ item, _id, body, postedBy }) => {
           return (
-            <Link to={"/posts/" + _id}>
+            <Link to={"/posts/" + _id} state={{from: location}}>
               <img src="res/avatar.png" alt="" width={293} height={293} />
             </Link>
           );

@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import IconButton from "../IconButton/IconButton";
 import styles from "./Post.module.scss";
 
 function Post({ id, nick, img, description }) {
+  const location = useLocation();
+
   return (
     <div className={styles.post}>
       <div className={styles.head}>
@@ -10,7 +12,7 @@ function Post({ id, nick, img, description }) {
         <h3>{nick}</h3>
       </div>
       <div className={styles.photo}>
-        <Link to={"/posts/" + id}>
+        <Link to={"/posts/" + id} state={{from: location}}>
           <img className={styles.mainPhoto} src={"res/" + img} alt="ph" />
         </Link>
       </div>
