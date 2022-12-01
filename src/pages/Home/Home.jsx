@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./Home.module.scss";
 import { AuthContext } from "../../auth/AuthProvider";
 import { PostsContext } from "../../posts/PostsProvider";
@@ -10,6 +10,11 @@ function MyPostsMapping() {
   const { myPosts, isMyPostsLoading } =
     useContext(PostsContext);
   const location = useLocation();
+
+  useEffect(() => {
+    const scrolledY = sessionStorage.getItem(window.location.pathname);
+    window.scroll(0, scrolledY);
+  }, []);
 
   return (
     <>

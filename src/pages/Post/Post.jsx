@@ -11,7 +11,6 @@ import { usePost } from "../../hooks/usePost";
 function Post() {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.state?.from?.pathname);
   const post = usePost(); 
 
   return (

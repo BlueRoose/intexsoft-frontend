@@ -1,12 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Post from "../../components/Post/Post";
 import { PostsContext } from "../../posts/PostsProvider";
 import styles from "./Posts.module.scss";
 
 function PostsMapping() {
-  const { posts, isPostsLoading} =
-    useContext(PostsContext);
+  const { posts, isPostsLoading } = useContext(PostsContext);
+
+  useEffect(() => {
+    const scrolledY = sessionStorage.getItem(window.location.pathname);
+    window.scroll(0, scrolledY);
+  }, []);
 
   return (
     <>
