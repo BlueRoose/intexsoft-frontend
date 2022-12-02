@@ -7,7 +7,7 @@ import { useState } from "react";
 function Post({ post, img }) {
   const [body, setBody] = useState("");
   const location = useLocation();
-  const { handleLike, liked, likesAmount, addComment, commentsAmount } = useActions({ post });
+  const { handleLike, liked, likes, addComment, comments } = useActions({ post });
 
   const handleChangeForm = (e) => {
     setBody(e.target.value);
@@ -32,7 +32,7 @@ function Post({ post, img }) {
           src="res/Comment.svg"
           alt="comment"
         />
-        {likesAmount ? <p className={styles.likes}>{likesAmount} отметок "Нравится"</p> : null}
+        {likes ? <p className={styles.likes}>{likes} отметок "Нравится"</p> : null}
       </div>
       <div className={styles.description}>
         <span>
@@ -40,7 +40,7 @@ function Post({ post, img }) {
           {post?.body}
         </span>
       </div>
-      {commentsAmount ? <p className={styles.comments}>Смотреть все комментарии ({commentsAmount})</p> : null}
+      {comments ? <p className={styles.comments}>Смотреть все комментарии ({comments})</p> : null}
       <div className={styles.comment}>
         <textarea placeholder="Добавьте комментарий..." onChange={(event) => handleChangeForm(event)}></textarea>
         <p onClick={() => addComment(body)}>Опубликовать</p>
