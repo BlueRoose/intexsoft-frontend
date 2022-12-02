@@ -17,14 +17,12 @@ function PostsMapping() {
       {isPostsLoading ? (
         <div className={styles.loader}></div>
       ) : (
-        posts.map(({ item, _id, body, postedBy }) => {
+        posts.map((post, item) => {
           return (
             <Post
               key={item}
-              id={_id}
-              nick={postedBy.name}
-              img={"photo.jpg"}
-              description={body}
+              post={post}
+              img="photo.jpg"
             />
           );
         })

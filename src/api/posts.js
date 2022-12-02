@@ -32,3 +32,34 @@ export const deletePost = async (id) => {
     method: "DELETE",
   });
 };
+
+export const like = async (postId) => {
+  await request({
+    url: "/like",
+    method: "PUT",
+    data: {
+      postId,
+    },
+  });
+};
+
+export const dislike = async (postId) => {
+  await request({
+    url: "/dislike",
+    method: "PUT",
+    data: {
+      postId,
+    },
+  });
+};
+
+export const comment = async (postId, text) => {
+  await request({
+    url: "/comment",
+    method: "PUT",
+    data: {
+      postId,
+      text,
+    },
+  });
+};

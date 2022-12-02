@@ -3,10 +3,11 @@ import IconButton from "../../components/IconButton/IconButton";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import photo from "../../res/photo.jpg";
 import avatar from "../../res/avatar.png";
-import like from "../../res/Heart0.svg";
-import comment from "../../res/Comment.svg";
+import likee from "../../res/Heart0.svg";
+import commente from "../../res/Comment.svg";
 import cross from "../../res/cross.svg";
 import { usePost } from "../../hooks/usePost";
+import { like, dislike, comment } from "../../api/posts";
 
 function Post() {
   const navigate = useNavigate();
@@ -29,9 +30,10 @@ function Post() {
           </div>
           <div className={styles.comments}></div>
           <div className={styles.buttons}>
-            <IconButton className={styles.icon} src={like} alt="heart" />
-            <IconButton className={styles.icon} src={comment} alt="comment" />
+            <IconButton onClick={like} id={post?._id} className={styles.icon} src={likee} alt="heart" />
+            <IconButton onClick={comment} id={post?._id} className={styles.icon} src={commente} alt="comment" />
           </div>
+          {post?.likes?.length ? <p>{post?.likes?.length} отметок "Нравится"</p> : null}
           <div className={styles.comment}>
             <textarea placeholder="Добавьте комментарий..."></textarea>
             <p>Опубликовать</p>

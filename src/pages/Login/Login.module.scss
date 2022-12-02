@@ -23,19 +23,18 @@
   }
 
   .blocks {
-    width: 460px;
+    max-width: 460px;
     display: flex;
     flex-direction: column;
 
     .fields {
       background-color: #ffffff;
-      width: 460px;
+      max-width: 460px;
       height: 350px;
       padding: 0;
       flex-direction: column;
       display: flex;
       align-items: center;
-      margin-right: 20px;
       border: 1px solid #d6d6d6;
       border-radius: 20px;
       margin-bottom: 20px;
@@ -55,14 +54,14 @@
 
     .register {
       background-color: #ffffff;
-      width: 460px;
+      max-width: 480px;
       height: 50px;
       display: flex;
       border: 1px solid #d6d6d6;
       border-radius: 20px;
 
       p:first-child {
-        margin-left: 50px;
+        margin-left: 20px;
         font-size: 16px;
         padding: 0;
         align-self: center;
@@ -70,6 +69,7 @@
 
       p:last-child {
         margin-left: 10px;
+        margin-right: 10px;
         font-size: 16px;
         padding: 0;
         align-self: center;
@@ -85,7 +85,7 @@
     }
 
     .badges {
-      width: 460px;
+      max-width: 460px;
       display: flex;
       justify-content: center;
       margin-top: 20px;
