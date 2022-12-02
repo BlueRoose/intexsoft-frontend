@@ -65,19 +65,30 @@
   }
 
   .secondBlock {
-    max-width: 919px;
+    max-width: 939px;
     margin-left: auto;
     margin-right: auto;
     border-top: 1px solid #d6d6d6;
     padding-top: 22px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    flex-wrap: wrap;
 
-    img {
-      margin-bottom: 20px;
+    .logos {
+      max-width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+
+      img {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 20px;
+      }
     }
+  }
+}
+
+@media (max-width: 935px) {
+  .logos {
+    flex-direction: column;
+    align-content: center;
   }
 }
 

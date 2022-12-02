@@ -29,7 +29,6 @@ export const request = async ({ headers = {}, method, url, data, params }) => {
 
     return result.data;
   } catch (error) {
-    alert(error);
     throw error;
   }
 };

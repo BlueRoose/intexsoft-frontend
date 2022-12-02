@@ -5,9 +5,11 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
 import { useAuth } from "../../hooks/useAuth";
+import { Alert } from "@mui/material";
 
 function Register() {
   const [form, setForm] = useState({});
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const { signUp } = useAuth();
 
@@ -16,9 +18,14 @@ function Register() {
 
   const saveUser = async () => {
     try {
-      signUp(form).then(() => navigate("/posts", { replace: true }));
-    } catch (error) {
-      alert("Ошибка регистрации");
+      await signUp(form);
+      navigate("/posts", { replace: true });
+    } catch (err) {
+      setError("Ошибка регистрации! Повторите попытку!");
+
+      setTimeout(() => {
+        setError("");
+      }, 3000);
     }
   };
 
@@ -54,6 +61,7 @@ function Register() {
           <div className={styles.pass}>
             <PasswordInput onChange={handleChangeForm} />
           </div>
+          {error && <Alert severity="error">{error}</Alert>}
           <p className={styles.par}>
             Регистрируясь, вы принимаете наши Условия, Политику
             конфиденциальности и Политику в отношении файлов cookie.

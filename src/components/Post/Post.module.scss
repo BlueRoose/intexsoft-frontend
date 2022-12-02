@@ -43,19 +43,34 @@
       margin: 7px 0 0 10px;
       cursor: pointer;
     }
+
+    .likes {
+      font-size: 14px;
+      margin-left: 10px;
+
+    }
   }
 
   .description {
     display: flex;
 
-    p {
+    span {
       font-size: 14px;
       margin-left: 10px;
 
       b {
         cursor: pointer;
+        font-size: 14px;
       }
     }
+  }
+
+  .comments {
+    color: gray;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-left: 10px;
+    cursor: pointer;
   }
 
   .comment {
@@ -91,6 +106,7 @@
       color: #0095f6;
       cursor: pointer;
       font-size: 14px;
+      padding-bottom: 10px;
     }
   }
 }

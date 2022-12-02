@@ -48,7 +48,7 @@
       }
 
       .comments {
-        height: 565px;
+        height: 535px;
         border-bottom: 1px solid #d6d6d6;
       }
 
@@ -62,6 +62,12 @@
         img {
           margin-right: 8px;
         }
+      }
+
+      p {
+        font-size: 14px;
+        margin-left: 10px;
+        margin-bottom: 5px;
       }
 
       .comment {

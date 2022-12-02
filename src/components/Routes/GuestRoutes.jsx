@@ -6,25 +6,15 @@ import Register from "../../pages/Register/Register";
 function GuestRoutes() {
   return (
     <Routes>
-      <Route exact path="/" element={<Navigate to="/login" replace={true} />} />
-      <Route
-        exact
-        path="/login"
-        element={
-          <GuestRoute>
-            <Login />
-          </GuestRoute>
-        }
-      />
-      <Route
-        exact
-        path="/register"
-        element={
-          <GuestRoute>
-            <Register />
-          </GuestRoute>
-        }
-      />
+      <Route element={<GuestRoute />}>
+        <Route
+          exact
+          path="/"
+          element={<Navigate to="/login" replace={true} />}
+        />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/register" element={<Register />} />
+      </Route>
     </Routes>
   );
 }

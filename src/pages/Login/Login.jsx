@@ -5,9 +5,11 @@ import Input from "../../components/Input/Input";
 import styles from "./Login.module.scss";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
 import { useAuth } from "../../hooks/useAuth";
+import { Alert } from "@mui/material";
 
 function Login() {
   const [form, setForm] = useState({});
+  const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
   const { logIn } = useAuth();
@@ -18,12 +20,10 @@ function Login() {
 
   const handleCheckUser = async () => {
     try {
-      await logIn(form).then(data => {
-        navigate(location.state?.from?.pathname || "/", { replace: true });
-      }
-      );
-    } catch (error) {
-      alert("Ошибка входа в аккаунт!");
+      await logIn(form);
+      navigate(location.state?.from?.pathname || "/", { replace: true });
+    } catch (err) {
+      setError("Ошибка входа в аккаунт! Повторите попытку!");
     }
   };
 
@@ -47,6 +47,11 @@ function Login() {
           <div className={styles.pass}>
             <PasswordInput onChange={handleChangeForm} />
           </div>
+          {error && (
+            <Alert severity="error">
+              Ошибка регистрации! Повторите попытку!
+            </Alert>
+          )}
           <Link to="/posts">
             <Button onClick={handleCheckUser}>Login</Button>
           </Link>

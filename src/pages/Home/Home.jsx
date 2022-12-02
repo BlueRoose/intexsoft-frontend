@@ -2,20 +2,19 @@ import { useContext, useEffect } from "react";
 import styles from "./Home.module.scss";
 import { AuthContext } from "../../auth/AuthProvider";
 import { PostsContext } from "../../posts/PostsProvider";
-import { getMyPosts } from "../../api/posts";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import { getUserFromStorage } from "../../helpers/users";
 
 function MyPostsMapping() {
-  const { myPosts, isMyPostsLoading, setMyPosts, setIsMyPostsLoading } =
+  const { myPosts, isMyPostsLoading } =
     useContext(PostsContext);
+  const location = useLocation();
 
   useEffect(() => {
-    getMyPosts().then((myPosts) => {
-      setMyPosts(myPosts);
-      setIsMyPostsLoading(false);
-    });
-  }, [setIsMyPostsLoading, setMyPosts]);
+    const scrolledY = sessionStorage.getItem(window.location.pathname);
+    window.scroll(0, scrolledY);
+  }, []);
 
   return (
     <>
@@ -24,7 +23,7 @@ function MyPostsMapping() {
       ) : (
         myPosts.map(({ item, _id, body, postedBy }) => {
           return (
-            <Link to={"/posts/" + _id}>
+            <Link to={"/posts/" + _id} state={{from: location}}>
               <img src="res/avatar.png" alt="" width={293} height={293} />
             </Link>
           );
@@ -36,7 +35,7 @@ function MyPostsMapping() {
 
 function Home() {
   const { logOut } = useContext(AuthContext);
-  const { user } = useContext(AuthContext);
+  const user = JSON.parse(getUserFromStorage());
 
   return (
     <div className={styles.home}>
@@ -61,7 +60,9 @@ function Home() {
         </div>
       </div>
       <div className={styles.secondBlock}>
-        <MyPostsMapping />
+        <div className={styles.logos}>
+          <MyPostsMapping />
+        </div>
       </div>
     </div>
   );

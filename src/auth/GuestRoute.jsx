@@ -1,14 +1,15 @@
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
-function GuestRoute({ children }) {
+function GuestRoute() {
   const { isAuth } = useAuth();
   const location = useLocation();
 
-  if (isAuth) {
-    return <Navigate to={location.state?.from?.pathname || "/posts"} />;
-  }
-  return children;
+  return !isAuth ? (
+    <Outlet />
+  ) : (
+    <Navigate to={location.state?.from?.pathname || "/posts"} state={{ from: location }} />
+  );
 }
 
 export default GuestRoute;

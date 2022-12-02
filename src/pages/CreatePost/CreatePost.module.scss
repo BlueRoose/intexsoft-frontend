@@ -19,6 +19,7 @@
       justify-content: space-between;
       padding: 10px;
       align-items: center;
+      border-bottom: 1px solid #D6D6D6;
 
       h3 {
         font-size: 24px;
@@ -35,58 +36,11 @@
       max-width: 100%;
       display: flex;
 
-      .photo {
-        max-width: 684px;
-        height: 682px;
-        background-color: #ffffff;
-        align-items: center;
-
-        .newPhoto {
-          max-width: 684px;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .add {
-          width: 300px;
-          height: 300px;
-          margin: 192px;
-          background-color: #ffffff;
-          border: 1px solid #d6d6d6;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          cursor: pointer;
-
-          .photo {
-            max-width: 200px;
-            height: 200px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 20px;
-          }
-
-          p {
-            font-size: 16px;
-            text-align: center;
-          }
-
-          .addFile {
-            width: 300px;
-            height: 300px;
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-          }
-        }
-      }
-
       .info {
         width: 100%;
         height: 684px;
         box-sizing: border-box;
         border-left: 1px solid #d6d6d6;
-        border-top: 1px solid #d6d6d6;
         padding: 15px 15px 0px 15px;
 
         .user {
@@ -110,6 +64,7 @@
             outline: none;
             border: none;
             resize: none;
+            overflow: hidden;
           }
 
           ::-webkit-input-placeholder {

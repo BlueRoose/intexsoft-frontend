@@ -4,6 +4,7 @@ import {
   getSessionFromStorage,
   removeSessionFromStorage,
 } from "../helpers/tokens";
+import { removeUserFromStorage } from "../helpers/users";
 
 export const AuthContext = createContext(null);
 
@@ -26,11 +27,12 @@ export const AuthProvider = ({ children }) => {
   const logIn = async (form) => {
     setUser(await userApi.login(form));
     setIsAuth(true);
-  };
+};
 
   const logOut = () => {
     setIsAuth(false);
     removeSessionFromStorage();
+    removeUserFromStorage();
   };
 
   const value = { isAuth, logIn, logOut, signUp, user };
