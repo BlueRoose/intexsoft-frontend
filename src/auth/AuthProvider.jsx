@@ -25,7 +25,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logIn = async (form) => {
-    setUser(await userApi.login(form));
+    const responce = await userApi.login(form);
+    setUser(responce);
     setIsAuth(true);
 };
 

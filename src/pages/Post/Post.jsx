@@ -7,7 +7,7 @@ import likee from "../../res/Heart0.svg";
 import commente from "../../res/Comment.svg";
 import cross from "../../res/cross.svg";
 import { usePost } from "../../hooks/usePost";
-import { like, dislike, comment } from "../../api/posts";
+import { like, comment } from "../../api/posts";
 
 function Post() {
   const navigate = useNavigate();

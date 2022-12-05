@@ -69,7 +69,7 @@ function Register() {
           <Button onClick={saveUser}>Зарегистрироваться</Button>
           <div className={styles.login}>
             <p>Уже есть аккаунт?</p>
-            <Link to="/login" style={{ textDecoration: "none" }} exact>
+            <Link to="/login" style={{ textDecoration: "none" }}>
               <p>Войдите</p>
             </Link>
           </div>
