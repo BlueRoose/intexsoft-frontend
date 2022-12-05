@@ -7,10 +7,17 @@ import { useState } from "react";
 function Post({ post, img }) {
   const [body, setBody] = useState("");
   const location = useLocation();
-  const { handleLike, liked, likes, addComment, comments } = useActions({ post });
+  const { handleLike, liked, likes, addComment, comments } = useActions({
+    post,
+  });
 
   const handleChangeForm = (e) => {
     setBody(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    addComment(body);
+    document.getElementById("textarea").value = "";
   };
 
   return (
@@ -20,19 +27,27 @@ function Post({ post, img }) {
         <h3>{post?.postedBy?.name}</h3>
       </div>
       <div className={styles.photo}>
-        <Link to={"/posts/" + post?._id} state={{from: location}}>
+        <Link to={"/posts/" + post?._id} state={{ from: location }}>
           <img className={styles.mainPhoto} src={"res/" + img} alt="ph" />
         </Link>
       </div>
       <div className={styles.btns}>
-        <IconButton onClick={handleLike} id={post?._id} className={styles.icon} src={liked ? "res/redHeart.png" : "res/Heart0.svg"} alt="heart" />
+        <IconButton
+          onClick={handleLike}
+          id={post?._id}
+          className={styles.icon}
+          src={liked ? "res/redHeart.png" : "res/Heart0.svg"}
+          alt="heart"
+        />
         <IconButton
           onClick={addComment}
           className={styles.icon}
           src="res/Comment.svg"
           alt="comment"
         />
-        {likes ? <p className={styles.likes}>{likes} отметок "Нравится"</p> : null}
+        {likes ? (
+          <p className={styles.likes}>{likes} отметок "Нравится"</p>
+        ) : null}
       </div>
       <div className={styles.description}>
         <span>
@@ -40,10 +55,18 @@ function Post({ post, img }) {
           {post?.body}
         </span>
       </div>
-      {comments ? <p className={styles.comments}>Смотреть все комментарии ({comments})</p> : null}
+      {comments ? (
+        <p className={styles.comments}>Смотреть все комментарии ({comments})</p>
+      ) : null}
       <div className={styles.comment}>
-        <textarea placeholder="Добавьте комментарий..." onChange={(event) => handleChangeForm(event)}></textarea>
-        <p onClick={() => addComment(body)}>Опубликовать</p>
+        <textarea
+        id="textarea"
+          placeholder="Добавьте комментарий..."
+          onChange={(event) => handleChangeForm(event)}
+        ></textarea>
+        <p onClick={handleSubmit}>
+          Опубликовать
+        </p>
       </div>
     </div>
   );
