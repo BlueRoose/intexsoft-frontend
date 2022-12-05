@@ -1,20 +1,18 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import styles from "./Home.module.scss";
 import { AuthContext } from "../../auth/AuthProvider";
 import { PostsContext } from "../../posts/PostsProvider";
 import { Link, useLocation } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { getUserFromStorage } from "../../helpers/users";
+import { useScroll } from "../../hooks/useScroll";
 
 function MyPostsMapping() {
   const { myPosts, isMyPostsLoading } =
     useContext(PostsContext);
   const location = useLocation();
 
-  useEffect(() => {
-    const scrolledY = sessionStorage.getItem(window.location.pathname);
-    window.scroll(0, scrolledY);
-  }, []);
+  useScroll();
 
   return (
     <>
