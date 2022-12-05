@@ -11,7 +11,7 @@ function PrivateRoutes() {
       <Route element={<RequireAuth />}>
         <Route exact path="posts/:id" element={<Post />} />
         <Route exact path="/posts" element={<Posts />} />
-        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/user/:userId" element={<Home />} />
         <Route exact path="/newpost" element={<CreatePost />} />
       </Route>
     </Routes>

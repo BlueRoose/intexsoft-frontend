@@ -10,6 +10,7 @@ import commente from "../../res/Comment.svg";
 import cross from "../../res/cross.svg";
 import { usePost } from "../../hooks/usePost";
 import useActions from "../../hooks/useActions";
+import Comment from "../../components/Comment/Comment";
 
 function Post() {
   const [body, setBody] = useState("");
@@ -48,7 +49,11 @@ function Post() {
               <img width={48} height={48} src={cross} alt="cross" />
             </Link>
           </div>
-          <div className={styles.comments}></div>
+          <div className={styles.comments}>
+            {comments ? post?.comments?.map(comment => {
+              return <Comment comment={comment}/>;
+            }) : null}
+          </div>
           <div className={styles.buttons}>
             <IconButton
               onClick={handleLike}

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { PostsContext } from "../posts/PostsProvider";
 
-export function useAuth() {
+export function usePosts() {
   return useContext(PostsContext);
 }

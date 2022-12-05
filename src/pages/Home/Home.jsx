@@ -6,6 +6,9 @@ import { Link, useLocation } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { getUserFromStorage } from "../../helpers/users";
 import { useScroll } from "../../hooks/useScroll";
+import avatar from "../../res/avatar.png";
+import logout from "../../res/logout.png";
+import photo from "../../res/photo.jpg";
 
 function MyPostsMapping() {
   const { myPosts, isMyPostsLoading } =
@@ -22,7 +25,7 @@ function MyPostsMapping() {
         myPosts.map(({ item, _id, body, postedBy }) => {
           return (
             <Link to={"/posts/" + _id} state={{from: location}}>
-              <img src="res/photo.png" alt="" width={293} height={293} />
+              <img src={photo} alt="" width={293} height={293} />
             </Link>
           );
         })
@@ -39,14 +42,14 @@ function Home() {
     <div className={styles.home}>
       <Header />
       <div className={styles.firstBlock}>
-        <img className={styles.avatar} src="res/avatar.png" alt="avatar" />
+        <img className={styles.avatar} src={avatar} alt="avatar" />
         <div className={styles.info}>
           <div className={styles.nick}>
             <h3>{user.name}</h3>
             <img
               onClick={() => logOut()}
               style={{ cursor: "pointer" }}
-              src="res/logout.png"
+              src={logout}
               alt="logout"
             />
           </div>

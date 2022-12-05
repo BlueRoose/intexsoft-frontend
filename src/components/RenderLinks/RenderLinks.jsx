@@ -1,9 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
+import { getUserFromStorage } from "../../helpers/users";
 import IconButton from "../IconButton/IconButton";
 
 function RenderLinks() {
-    const location = useLocation();
+  const location = useLocation();
   const currentUrl = location.pathname;
+  const { _id } = JSON.parse(getUserFromStorage());
 
   const headerItems = [
     {
@@ -25,23 +27,21 @@ function RenderLinks() {
       alt: "likes",
     },
     {
-      url: "/home",
+      url: `/user/${_id}`,
       icon: "res/Heart0.svg",
       chosenIcon: "res/Heart1.png",
       alt: "home",
     },
   ];
 
-    return (
-        headerItems.map((item, id) => (
-            <Link key={id} to={item.url}>
-              <IconButton
-                src={item.url === currentUrl ? item.chosenIcon : item.icon}
-                alt={item.alt}
-              />
-            </Link>
-          ))
-    );
+  return headerItems.map((item, id) => (
+    <Link key={id} to={item.url}>
+      <IconButton
+        src={item.url === currentUrl ? item.chosenIcon : item.icon}
+        alt={item.alt}
+      />
+    </Link>
+  ));
 }
 
 export default RenderLinks;

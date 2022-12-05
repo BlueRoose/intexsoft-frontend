@@ -6,11 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import FileLoader from "../../components/FileLoader/FileLoader";
 import { Alert } from "@mui/material";
 import { resize } from "../../helpers/textarea";
+import { usePosts } from "../../hooks/usePosts";
 
 function CreatePost() {
   const [body, setBody] = useState({});
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { setPostWasAdded } = usePosts();
 
   const handleChangeForm = (name, e) => {
     setBody({ ...body, [name]: e.target.value });
@@ -19,6 +21,7 @@ function CreatePost() {
   const addNewPost = async () => {
     try {
       await addPost(body);
+      setPostWasAdded(true);
       alert("Успех!");
       navigate("/posts", { replace: true });
     } catch (error) {

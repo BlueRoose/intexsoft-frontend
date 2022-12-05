@@ -55,9 +55,9 @@ function Post({ post, img }) {
           {post?.body}
         </span>
       </div>
-      {comments ? (
+      <Link  to={"/posts/" + post?._id} style={{textDecoration: "none"}} state={{ from: location }}>{comments ? (
         <p className={styles.comments}>Смотреть все комментарии ({comments})</p>
-      ) : null}
+      ) : null}</Link>
       <div className={styles.comment}>
         <textarea
         id="textarea"

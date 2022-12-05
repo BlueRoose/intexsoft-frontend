@@ -8,6 +8,7 @@ export const PostsProvider = ({ children }) => {
   const [myPosts, setMyPosts] = useState([]);
   const [isPostsLoading, setIsPostsLoading] = useState(true);
   const [isMyPostsLoading, setIsMyPostsLoading] = useState(true);
+  const [postWasAdded, setPostWasAdded] = useState(false);
 
   useEffect(() => {
     getPosts().then((posts) => {
@@ -18,7 +19,8 @@ export const PostsProvider = ({ children }) => {
       setMyPosts(myPosts);
       setIsMyPostsLoading(false);
     });
-  }, [setPosts, setMyPosts]);
+    setPostWasAdded(false);
+  }, [setPosts, setMyPosts, postWasAdded]);
 
   const value = {
     posts,
@@ -29,6 +31,7 @@ export const PostsProvider = ({ children }) => {
     setIsPostsLoading,
     setMyPosts,
     setIsMyPostsLoading,
+    setPostWasAdded,
   };
 
   return (
