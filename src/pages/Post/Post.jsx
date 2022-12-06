@@ -43,7 +43,7 @@ function Post() {
           <div className={styles.head}>
             <div className={styles.user}>
               <IconButton src={avatar} alt="heart" />
-              <h3>{post?.postedBy?.name}</h3>
+              <Link to={"/user/" + post?.postedBy?._id} style={{textDecoration: "none", color: "black"}} ><h3>{post?.postedBy?.name}</h3></Link>
             </div>
             <Link to={location.state?.from?.pathname}>
               <img width={48} height={48} src={cross} alt="cross" />

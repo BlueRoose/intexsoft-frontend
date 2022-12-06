@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styles from "./Home.module.scss";
 import { AuthContext } from "../../auth/AuthProvider";
 import { PostsContext } from "../../posts/PostsProvider";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { getUserFromStorage } from "../../helpers/users";
 import { useScroll } from "../../hooks/useScroll";
@@ -11,9 +11,11 @@ import logout from "../../res/logout.png";
 import photo from "../../res/photo.jpg";
 
 function MyPostsMapping() {
-  const { myPosts, isMyPostsLoading } =
+  const { myPosts, userPosts, isMyPostsLoading } =
     useContext(PostsContext);
   const location = useLocation();
+  const id = useParams();
+  const user = JSON.parse(getUserFromStorage());
 
   useScroll();
 
@@ -22,7 +24,7 @@ function MyPostsMapping() {
       {isMyPostsLoading ? (
         <div className={styles.loader}></div>
       ) : (
-        myPosts.map(({ item, _id, body, postedBy }) => {
+        (id === user._id ? myPosts : userPosts).map(({ item, _id, body, postedBy }) => {
           return (
             <Link to={"/posts/" + _id} state={{from: location}}>
               <img src={photo} alt="" width={293} height={293} />
@@ -45,7 +47,7 @@ function Home() {
         <img className={styles.avatar} src={avatar} alt="avatar" />
         <div className={styles.info}>
           <div className={styles.nick}>
-            <h3>{user.name}</h3>
+            <h3>{}</h3>
             <img
               onClick={() => logOut()}
               style={{ cursor: "pointer" }}

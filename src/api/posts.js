@@ -63,3 +63,11 @@ export const comment = async (postId, text) => {
     },
   });
 };
+
+export const getUserPosts = async (id) => {
+  const responce = await request({
+    url: `user/${id}`,
+  });
+  console.log(responce);
+  return responce;
+};
